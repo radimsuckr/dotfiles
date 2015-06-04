@@ -1,0 +1,205 @@
+function! GetRunningOS()
+	if has('win32')
+		return 'windows'
+	endif
+
+	if has('unix')
+		if system('uname')=~'Darwin'
+			return 'mac'
+		else
+			return 'linux'
+		endif
+	endif
+endfunction
+let OS=GetRunningOS()
+
+if OS=='windows'
+	set rtp+=~/.nvim/
+endif
+
+
+""""""""""""""""""
+" MANAGE PLUGINS "
+""""""""""""""""""
+"Install Plug if missing
+if empty(glob('~/.nvim/autoload/plug.vim'))
+	!curl -o ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
+"Plugins
+call plug#begin('~/.nvim/plugged')
+	Plug 'L9' "Required by a lot of Vim plugins
+	Plug 'scrooloose/nerdtree' "File browser
+	Plug 'scrooloose/syntastic' "Syntax checker
+	Plug 'scrooloose/nerdcommenter' "Easy commenting
+	Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' "Snippets support
+	Plug 'dart-lang/dart-vim-plugin' "Dart support
+	Plug 'Raimondi/delimitMate' "Quotes, brackets, etc. autocompletion
+	Plug 'kien/ctrlp.vim' "Fuzzy etc. search
+	Plug 'Janiczek/vim-latte' "Latte templating language support
+	Plug 'Grelek/badwolf' "Color scheme
+	Plug 'chriskempson/vim-tomorrow-theme' "Multiple color schemes
+	Plug 'bling/vim-airline' "Lightweight but powerful powerline replacement
+	Plug 'StanAngeloff/php.vim' "Better PHP support
+	Plug 'wting/rust.vim' "Rustlang support
+	Plug 'nathanaelkane/vim-indent-guides' "Display indentation levels
+	Plug 'suan/vim-instant-markdown' "Live preview for Markdown
+	Plug 'edkolev/promptline.vim' "Integrate Airline into zsh
+	Plug 'tpope/vim-fugitive' "Git support
+	Plug 'tpope/vim-surround' "Some surrounding magic!
+	Plug 'Xuyuanp/nerdtree-git-plugin' "Git signs in NERDTree
+	Plug 'BufOnly.vim' "Plugin for deleting all bufers but the one opened
+	Plug 'othree/html5.vim' "HTML5 support
+	Plug 'groenewege/vim-less' "LESS CSS support
+	Plug 'junegunn/rainbow_parentheses.vim' "Colored parentheses
+	Plug 'junegunn/goyo.vim' "Distraction free mode for Vim
+	Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' } "Autocompletion
+	Plug '4Evergreen4/vim-hardy' "Arduino support
+call plug#end()
+
+
+""""""""""""""""""""
+" GENERAL SETTINGS "
+""""""""""""""""""""
+set backspace=indent,eol,start "hack - fixes deleting with backspace
+set nocompatible "be iMproved, required
+
+"GUI specific settings
+if has('gui_running')
+	"Window size and position
+	winpos 0 0
+
+	"Hide menu, toolbar and scrollbars
+	set guioptions-=T "Toolbar
+	set guioptions-=r "Right scrollbar
+	set guioptions-=L "Left scrollbar
+	set guioptions-=m "Menu bar
+
+	if OS=='linux'
+		"set guifont=DejaVu\ Sans\ Mono\ 9
+		set guifont=DejaVu\ Sans\ Mono\ For\ Powerline\ 9
+	endif
+
+	if OS=='windows'
+		set guifont=Consolas:h10
+	endif
+endif
+
+"Editor settings
+set t_Co=256 "Set 256 colors to make badwolf colorscheme working
+colorscheme badwolf
+set number "Show lines numbers
+syntax on "Turn on syntax highlighting
+"Allow transparent background in terminal
+	hi nontext ctermbg=none
+	hi normal ctermbg=none
+set autoindent "Keep same indentation level as on previous line
+set tabstop=4 "Tab size is 4 spaces
+set shiftwidth=4
+set copyindent "Copy the previous indentation on autoindenting
+set smarttab "Insert tabs on the start of line according to shiftwidth
+set colorcolumn=80 "Set ruler
+set incsearch "Show search matches as typed
+set hlsearch "Highlight search matches
+set autoread "Reload file if it was changed
+set showcmd "Show incomplete command ("+y)
+set pastetoggle=<F2> "Awesome pasting mode on F2 key
+set scrolloff=15 "Keep 10 lines above or below when scroll
+"Persistent undo
+	set undofile
+	set undodir=~/.nvim/undo
+"Encoding
+	set encoding=utf-8
+	set fileencoding=utf-8
+"Better indenting of code block
+	vnoremap < <gv
+	vnoremap > >gv
+"Automatic reloading of .vimrc or vimrc
+	autocmd! bufwritepost .nvimrc source %
+	autocmd! bufwritepost nvimrc source ~/.nvimrc
+
+"Toggle between relative and absolute numbers
+function! NumberToggle()
+	if &relativenumber==1
+		set norelativenumber
+		set number
+	else
+		set nonumber
+		set relativenumber
+	endif
+endfunc
+
+"Leader + g to switch to relative line numbers
+nnoremap <Leader>g :call NumberToggle()<CR>
+
+"Save current buffer on focus lost
+autocmd focuslost * silent! w
+
+if OS=='linux'
+	"Generate promptline settings on Vim start/exit (hack?)
+	autocmd! vimenter * PromptlineSnapshot! ~/.shell_prompt.sh airline
+	autocmd! vimleave * PromptlineSnapshot! ~/.shell_prompt.sh airline
+endif
+
+
+""""""""""""""""""""
+" PLUGINS SETTINGS "
+""""""""""""""""""""
+"scrooloose/NERDTree
+	"Leader + x to open NERDTree
+	nnoremap <Leader>x :NERDTreeToggle<CR>
+	inoremap <Leader>x <Esc>:NERDTreeToggle<CR>
+let NERDTreeChDirMode=2 "When directory is changed in NERDTree change CWD, too
+let NERDTreeShowHidden=1 "Show hidden files *except* the known temp files, system files & VCS files
+let NERDTreeIgnore=[]
+for suffix in split(&suffixes, ',')
+	let NERDTreeIgnore+=[ escape(suffix, '.~') . '$' ]
+endfor
+let NERDTreeIgnore+=[ '^\.bundle$', '^\.bzr$', '^\.git$', '^\.hg$', '^\.sass-cache$', '^\.svn$', '^\.$', '^\.\.$', '^Thumbs\.db$' ]
+
+
+"bling/vim-airline
+let g:airline#extensions#tabline#enabled=1
+	"Airline look
+	if OS=='linux' || OS=='mac'
+		let g:airline_powerline_fonts=1
+	endif
+	let g:airline_theme='badwolf'
+	"scrooloose/syntastic
+	let g:airline#extensions#syntastic#enabled=1
+	"edkolev/promptline.vim
+	let g:airline#extensions#promptline#snapshot_file='~/.shell_prompt.sh'
+	let g:airline#extensions#promptline#enabled=1
+	let g:airline#extensions#promptline#color_template='insert'
+	"kien/ctrlp.vim
+	let g:airline#extensions#ctrlp#show_adjacent_modes=1
+
+"edkolev/promptline.vim
+if OS=='linux' || OS=='mac'
+	let g:promptline_powerline_symbols=1
+	let g:promptline_theme='airline'
+	let g:promptline_preset = {
+		\'a': [ promptline#slices#user(),promptline#slices#host({'only_if_ssh': 1}), promptline#slices#cwd()],
+		\'c': [ promptline#slices#vcs_branch(), promptline#slices#git_status() ],
+		\'warn': [ promptline#slices#last_exit_code() ],
+		\'options': {
+			\'left_sections': [ 'a', 'c' ],
+			\'left_only_sections': [ 'a', 'c' ]}}
+endif
+
+"dart-lang/dart-vim-plugin
+let g:dart_style_guide=1
+
+"SirVer/ultisnips
+let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsJumpForwardTrigger='<c-b>'
+let g:UltiSnipsJumpBackwardTrigger='<c-z>'
+
+"scrooloose/syntastic
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_check_on_open=1
+let g:syntastic_check_on_wq=1
+	"Use C++11
+	let g:syntastic_cpp_compiler='g++'
+	let g:syntastic_cpp_compiler_options='-std=c++11 -Wall -Wextra -Wpedantic'

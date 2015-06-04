@@ -1,0 +1,15 @@
+export EDITOR=/usr/bin/nvim
+
+# Use Vim Airline/Promptline settings
+source ~/.shell_prompt.sh
+
+alias ls="ls -A --color=always"
+
+# Add Dart SDK directory to PATH
+if [ -d ~/bin/dart-sdk/bin/ ]; then
+	export PATH=~/bin/dart-sdk/bin/:$PATH
+fi
+
+# Use nvbm/thefuck
+alias fuck='eval $(thefuck $(fc -ln -1))'
+alias FUCK='fuck'
