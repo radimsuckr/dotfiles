@@ -160,7 +160,6 @@ let NERDTreeIgnore+=[ '^\.bundle$', '^\.bzr$', '^\.git$', '^\.hg$', '^\.sass-cac
 
 "bling/vim-airline
 let g:airline#extensions#tabline#enabled=1
-let g:airline_detect_crypt=0 "Temporarily fix issue #792
 	"Airline look
 	if OS=='linux' || OS=='mac'
 		let g:airline_powerline_fonts=1
