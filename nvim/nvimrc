@@ -29,9 +29,9 @@ endif
 "Plugins
 call plug#begin('~/.nvim/plugged')
 	Plug 'L9' "Required by a lot of Vim plugins
-	Plug 'scrooloose/nerdtree' "File browser
+	Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } "File browser
 	Plug 'scrooloose/syntastic' "Syntax checker
-	Plug 'scrooloose/nerdcommenter', { 'on': 'NERDTreeToggle' } "Easy commenting
+	Plug 'scrooloose/nerdcommenter' "Easy commenting
 	Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' "Snippets support
 	Plug 'dart-lang/dart-vim-plugin' "Dart support
 	Plug 'Raimondi/delimitMate' "Quotes, brackets, etc. autocompletion
@@ -52,7 +52,7 @@ call plug#begin('~/.nvim/plugged')
 	Plug 'othree/html5.vim' "HTML5 support
 	Plug 'groenewege/vim-less' "LESS CSS support
 	Plug 'junegunn/rainbow_parentheses.vim', { 'on': 'RainbowParentheses' } "Colored parentheses
-	Plug 'junegunn/goyo.vim' "Distraction free mode for Vim
+	Plug 'junegunn/goyo.vim', { 'on': 'Goyo' } "Distraction free mode for Vim
 	Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' } "Autocompletion
 	Plug '4Evergreen4/vim-hardy' "Arduino support
 call plug#end()
