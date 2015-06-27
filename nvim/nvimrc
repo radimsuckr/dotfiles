@@ -41,11 +41,7 @@ call plug#begin('~/.nvim/plugged')
 	Plug 'chriskempson/vim-tomorrow-theme' "Multiple color schemes
 	Plug 'bling/vim-airline' "Lightweight but powerful powerline replacement
 	Plug 'StanAngeloff/php.vim' "Better PHP support
-	Plug 'wting/rust.vim' "Rustlang support
-	Plug 'nathanaelkane/vim-indent-guides' "Display indentation levels
-	Plug 'suan/vim-instant-markdown' "Live preview for Markdown
 	Plug 'edkolev/promptline.vim' "Integrate Airline into zsh
-	Plug 'tpope/vim-fugitive' "Git support
 	Plug 'tpope/vim-surround' "Some surrounding magic!
 	Plug 'Xuyuanp/nerdtree-git-plugin' "Git signs in NERDTree
 	Plug 'BufOnly.vim' "Plugin for deleting all bufers but the one opened
