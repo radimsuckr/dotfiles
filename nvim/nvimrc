@@ -154,7 +154,6 @@ for suffix in split(&suffixes, ',')
 endfor
 let NERDTreeIgnore+=[ '^\.bundle$', '^\.bzr$', '^\.git$', '^\.hg$', '^\.sass-cache$', '^\.svn$', '^\.$', '^\.\.$', '^Thumbs\.db$' ]
 
-
 "bling/vim-airline
 let g:airline#extensions#tabline#enabled=1
 	"Airline look
@@ -188,7 +187,7 @@ endif
 let g:dart_style_guide=1
 
 "SirVer/ultisnips
-let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsExpandTrigger='<c-y>'
 let g:UltiSnipsJumpForwardTrigger='<c-b>'
 let g:UltiSnipsJumpBackwardTrigger='<c-z>'
 
