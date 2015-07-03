@@ -40,6 +40,7 @@ call plug#begin('~/.nvim/plugged')
 	Plug 'kien/ctrlp.vim' "Fuzzy etc. search
 	Plug 'Janiczek/vim-latte' "Latte templating language support
 	Plug 'Grelek/badwolf' "Color scheme
+	Plug 'NLKNguyen/papercolor-theme' "Another color scheme
 	Plug 'chriskempson/vim-tomorrow-theme' "Multiple color schemes
 	Plug 'bling/vim-airline' "Lightweight but powerful powerline replacement
 	Plug 'StanAngeloff/php.vim' "Better PHP support
