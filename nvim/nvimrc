@@ -128,9 +128,6 @@ endfunc
 "Leader + g to switch to relative line numbers
 nnoremap <Leader>g :call NumberToggle()<CR>
 
-"Save current buffer on focus lost
-autocmd focuslost * silent! w
-
 if OS=='linux'
 	"Generate promptline settings on Vim start/exit (hack?)
 	autocmd! vimenter * PromptlineSnapshot! ~/.shell_prompt.sh airline
