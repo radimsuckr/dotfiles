@@ -1,14 +1,45 @@
-export EDITOR=/usr/bin/nvim
+# Path to your oh-my-zsh installation.
+export ZSH=~/.oh-my-zsh
 
-# Use Vim Airline/Promptline settings
+# To use content from custom/ directory, remember to add
+# ZSH_CUSTOM=~/<dotfiles_dir>/zsh/custom
+# to your .zshrc!
+# ZSH_THEME=""
+
+# Use Vim Airline/Promptline settings, requries PowerLine fonts
 source ~/.shell_prompt.sh
 
-alias ls="ls -A --color=always"
+# Case sensitive completion
+CASE_SENSITIVE="true"
 
-# Add Dart SDK directory to PATH
-if [ -d ~/bin/dart-sdk/bin/ ]; then
-	export PATH=~/bin/dart-sdk/bin/:$PATH
-fi
+export UPDATE_ZSH_DAYS=7
+
+# Display three red dots while waiting for completion
+COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Date format for history stamps
+HIST_STAMPS="dd/mm/yyyy"
+
+plugins=(git python)
+
+# User configuration
+export PATH="/home/grelek/bin:/usr/local/bin:/usr/bin:/bin:/usr/bin/X11"
+# export MANPATH="/usr/local/man:$MANPATH"
+
+source $ZSH/oh-my-zsh.sh
+
+# ssh
+export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# Set account editor
+export EDITOR=/usr/bin/nvim
+
+alias ls="ls -A --color=always"
 
 # Use nvbm/thefuck
 alias fuck='eval $(thefuck $(fc -ln -1))'
