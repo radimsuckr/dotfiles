@@ -134,6 +134,27 @@ if OS=='linux'
 	autocmd! vimleave * PromptlineSnapshot! ~/.shell_prompt.sh airline
 endif
 
+function! RotateColors()
+	if !exists('colors_list')
+		let colors_list =
+		\ sort(map(
+		\   filter(split(globpath(&rtp, "colors/*.vim"), "\n"), 'v:val !~ "^/usr/"'),
+		\   "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"))
+	endif
+
+	if !exists('colorsindex')
+		let colors_index = index(colors_list, g:colors_name)
+	endif
+
+	let colors_index = (colors_index + 1) % len(colors_list)
+	let name = colors_list[colors_index]
+
+	execute 'colorscheme' name
+	execute 'AirlineTheme' name
+	redraw
+	echo name
+endfunction
+nnoremap <F8> :call RotateColors()<CR>
 
 """"""""""""""""""""
 " PLUGINS SETTINGS "
@@ -156,7 +177,7 @@ let g:airline#extensions#tabline#enabled=1
 	if OS=='linux' || OS=='mac'
 		let g:airline_powerline_fonts=1
 	endif
-	let g:airline_theme='badwolf'
+	let g:airline_theme = 'badwolf'
 	"scrooloose/syntastic
 	let g:airline#extensions#syntastic#enabled=1
 	"edkolev/promptline.vim
