@@ -41,7 +41,6 @@ call plug#begin('~/.nvim/plugged')
 	Plug 'Janiczek/vim-latte' "Latte templating language support
 	Plug 'Grelek/badwolf' "Color scheme
 	Plug 'NLKNguyen/papercolor-theme' "Another color scheme
-	Plug 'chriskempson/vim-tomorrow-theme' "Multiple color schemes
 	Plug 'bling/vim-airline' "Lightweight but powerful powerline replacement
 	Plug 'StanAngeloff/php.vim' "Better PHP support
 	Plug 'edkolev/promptline.vim' "Integrate Airline into zsh
