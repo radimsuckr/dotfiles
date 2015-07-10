@@ -125,7 +125,7 @@ call plug#begin('~/.nvim/plugged')
 	Plug 'Janiczek/vim-latte'
 
 	" Dark color scheme
-	Plug 'Grelek/badwolf'
+	"Plug 'Grelek/badwolf'
 
 	" Light (Google Material-like) color scheme
 	Plug 'NLKNguyen/papercolor-theme'
