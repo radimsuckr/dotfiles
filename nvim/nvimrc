@@ -1,3 +1,6 @@
+" Functions
+" """""""""
+" Get operating system
 function! GetRunningOS()
 	if has('win32')
 		return 'windows'
@@ -13,107 +16,7 @@ function! GetRunningOS()
 endfunction
 let OS=GetRunningOS()
 
-if OS=='windows'
-	set rtp+=~/.nvim/
-endif
-
-
-""""""""""""""""""
-" MANAGE PLUGINS "
-""""""""""""""""""
-"Install Plug if missing
-if empty(glob('~/.nvim/autoload/plug.vim'))
-	silent !curl -fLo ~/.nvim/autoload/plug.vim --create-dirs
-		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	autocmd VimEnter * PlugInstall
-endif
-
-"Plugins
-call plug#begin('~/.nvim/plugged')
-	Plug 'L9' "Required by a lot of Vim plugins
-	Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } "File browser
-	Plug 'scrooloose/syntastic' "Syntax checker
-	Plug 'scrooloose/nerdcommenter' "Easy commenting
-	Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' "Snippets support
-	Plug 'dart-lang/dart-vim-plugin' "Dart support
-	Plug 'Raimondi/delimitMate' "Quotes, brackets, etc. autocompletion
-	Plug 'kien/ctrlp.vim' "Fuzzy etc. search
-	Plug 'Janiczek/vim-latte' "Latte templating language support
-	Plug 'Grelek/badwolf' "Color scheme
-	Plug 'NLKNguyen/papercolor-theme' "Another color scheme
-	Plug 'bling/vim-airline' "Lightweight but powerful powerline replacement
-	Plug 'StanAngeloff/php.vim' "Better PHP support
-	Plug 'edkolev/promptline.vim' "Integrate Airline into zsh
-	Plug 'tpope/vim-surround' "Some surrounding magic!
-	Plug 'Xuyuanp/nerdtree-git-plugin' "Git signs in NERDTree
-	Plug 'BufOnly.vim' "Plugin for deleting all bufers but the one opened
-	Plug 'othree/html5.vim' "HTML5 support
-	Plug 'groenewege/vim-less' "LESS CSS support
-	Plug 'junegunn/rainbow_parentheses.vim', { 'on': 'RainbowParentheses' } "Colored parentheses
-	Plug 'junegunn/goyo.vim', { 'on': 'Goyo' } "Distraction free mode for Vim
-	Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' } "Autocompletion
-	Plug '4Evergreen4/vim-hardy' "Arduino support
-call plug#end()
-
-
-""""""""""""""""""""
-" GENERAL SETTINGS "
-""""""""""""""""""""
-set backspace=indent,eol,start "hack - fixes deleting with backspace
-set nocompatible "be iMproved, required
-
-"GUI specific settings
-if has('gui_running')
-	"Window size and position
-	winpos 0 0
-
-	"Hide menu, toolbar and scrollbars
-	set guioptions-=T "Toolbar
-	set guioptions-=r "Right scrollbar
-	set guioptions-=L "Left scrollbar
-	set guioptions-=m "Menu bar
-
-	if OS=='linux'
-		"set guifont=DejaVu\ Sans\ Mono\ 9
-		set guifont=DejaVu\ Sans\ Mono\ For\ Powerline\ 9
-	endif
-
-	if OS=='windows'
-		set guifont=Consolas:h10
-	endif
-endif
-
-"Editor settings
-set t_Co=256 "Set 256 colors to make badwolf colorscheme working
-colorscheme badwolf
-set number "Show lines numbers
-syntax on "Turn on syntax highlighting
-set autoindent "Keep same indentation level as on previous line
-set tabstop=4 "Tab size is 4 spaces
-set shiftwidth=4
-set copyindent "Copy the previous indentation on autoindenting
-set smarttab "Insert tabs on the start of line according to shiftwidth
-set colorcolumn=80 "Set ruler
-set incsearch "Show search matches as typed
-set hlsearch "Highlight search matches
-set autoread "Reload file if it was changed
-set showcmd "Show incomplete command ("+y)
-set pastetoggle=<F2> "Awesome pasting mode on F2 key
-set scrolloff=15 "Keep 10 lines above or below when scroll
-"Persistent undo
-	set undofile
-	set undodir=~/.nvim/undo
-"Encoding
-	set encoding=utf-8
-	set fileencoding=utf-8
-"Better indenting of code block
-	vnoremap < <gv
-	vnoremap > >gv
-"Automatic reloading of .vimrc or vimrc
-	autocmd! bufwritepost .nvimrc source %
-	autocmd! bufwritepost nvimrc source ~/.nvimrc
-
-"Toggle between relative and absolute numbers
+" Toggle between relative and absolute numbers
 function! NumberToggle()
 	if &relativenumber==1
 		set norelativenumber
@@ -122,103 +25,210 @@ function! NumberToggle()
 		set nonumber
 		set relativenumber
 	endif
-endfunc
+endfunction
 
-"Leader + g to switch to relative line numbers
-nnoremap <Leader>g :call NumberToggle()<CR>
-
-if OS=='linux'
-	"Generate promptline settings on Vim start/exit (hack?)
-	autocmd! vimenter * PromptlineSnapshot! ~/.shell_prompt.sh airline
-	autocmd! vimleave * PromptlineSnapshot! ~/.shell_prompt.sh airline
-endif
-
+" Rotate between colorschemes
 function! RotateColors()
 	if !exists('colors_list')
-		let colors_list =
-		\ sort(map(
-		\   filter(split(globpath(&rtp, "colors/*.vim"), "\n"), 'v:val !~ "^/usr/"'),
-		\   "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"))
+		let colors_list=
+			\sort(map(
+			\filter(split(globpath(&rtp, "colors/*.vim"), "\n"), 'v:val !~ "^/usr/"'),
+			\"substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"))
 	endif
 
 	if !exists('colorsindex')
-		let colors_index = index(colors_list, g:colors_name)
+		let colors_index=index(colors_list, g:colors_name)
 	endif
 
-	let colors_index = (colors_index + 1) % len(colors_list)
-	let name = colors_list[colors_index]
+	let colors_index=(colors_index + 1) % len(colors_list)
+	let name=colors_list[colors_index]
 
 	execute 'colorscheme' name
 	execute 'AirlineTheme' name
 	redraw
 	echo name
 endfunction
-nnoremap <F8> :call RotateColors()<CR>
 
-""""""""""""""""""""
-" PLUGINS SETTINGS "
-""""""""""""""""""""
-"scrooloose/NERDTree
-	"Leader + x to open NERDTree
+" Configuration
+" """""""""""""
+if OS=='windows'
+	set rtp+=~/.nvim/
+endif
+
+" Install Plug if missing
+if empty(glob('~/.nvim/autoload/plug.vim'))
+	silent !curl -fLo ~/.nvim/autoload/plug.vim --create-dirs
+		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+	autocmd VimEnter * PlugInstall
+endif
+
+" Plugins
+call plug#begin('~/.nvim/plugged')
+	" Required by a lot of Vim plugins
+	Plug 'L9'
+
+	" File browser
+	Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+	" Leader + x to open NERDTree
 	nnoremap <Leader>x :NERDTreeToggle<CR>
-	inoremap <Leader>x <Esc>:NERDTreeToggle<CR>
-let NERDTreeChDirMode=2 "When directory is changed in NERDTree change CWD, too
-let NERDTreeShowHidden=1 "Show hidden files *except* the known temp files, system files & VCS files
-let NERDTreeIgnore=[]
-for suffix in split(&suffixes, ',')
-	let NERDTreeIgnore+=[ escape(suffix, '.~') . '$' ]
-endfor
-let NERDTreeIgnore+=[ '^\.bundle$', '^\.bzr$', '^\.git$', '^\.hg$', '^\.sass-cache$', '^\.svn$', '^\.$', '^\.\.$', '^Thumbs\.db$' ]
+	inoremap <Leader>x <ESC>:NERDTreeToggle<CR>
 
-"bling/vim-airline
-let g:airline#extensions#tabline#enabled=1
-	"Airline look
+	let NERDTreeChDirMode=2 "When directory is changed, change CWD, too
+	let NERDTreeShowHidden=1 "Show hidden files except temp, system & VCS files
+	let NERDTreeIgnore=[]
+	for suffix in split(&suffixes, ',')
+		let NERDTreeIgnore+=[ escape(suffix, '.~') . '$' ]
+	endfor
+	let NERDTreeIgnore+=[
+		\'^\.bundle$',
+		\'^\.bzr$',
+		\'^\.git$',
+		\'^\.hg$',
+		\'^\.svn$',
+		\'^\.$',
+		\'^\.\.$',
+		\'^Thumbs\.db$']
+
+	" Show Git marks in NERDTree
+	Plug 'Xuyuanp/nerdtree-git-plugin'
+
+	" Syntax checker
+	Plug 'scrooloose/syntastic'
+	let g:syntastic_always_populate_loc_list=1
+	let g:syntastic_auto_loc_list=1
+	let g:syntastic_check_on_open=1
+	let g:syntastic_check_on_wq=1
+	let g:airline#extensions#syntastic#enabled=1
+
+	" Easy commenting
+	Plug 'scrooloose/nerdcommenter'
+
+	" Snippets support
+	Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+	let g:UltiSnipsExpandTrigger='<C-Y>'
+	let g:UltiSnipsJumpForwardTrigger='<C-B>'
+	let g:UltiSnipsJumpBackwardTrigger='<C-Z>'
+
+	" Dart support
+	Plug 'dart-lang/dart-vim-plugin'
+	let g:dart_style_guide=1
+
+	" Queotes, brackets, etc. autocompletion
+	Plug 'Raimondi/delimitMate'
+
+	" File fuzzy-finder
+	Plug 'kien/ctrlp.vim'
+	let g:airline#extensions#ctrlp#show_adjacent_modes=1
+
+	" Latte templating language support
+	Plug 'Janiczek/vim-latte'
+
+	" Dark color scheme
+	Plug 'Grelek/badwolf'
+
+	" Light (Google Material-like) color scheme
+	Plug 'NLKNguyen/papercolor-theme'
+
+	" Lightweight powerline replacement
+	Plug 'bling/vim-airline'
+	let g:airline#extensions#tabline#enabled=1
 	if OS=='linux' || OS=='mac'
 		let g:airline_powerline_fonts=1
 	endif
-	let g:airline_theme = 'badwolf'
-	"scrooloose/syntastic
-	let g:airline#extensions#syntastic#enabled=1
-	"edkolev/promptline.vim
+
+	" Better PHP support
+	Plug 'StanAngeloff/php.vim'
+
+	" Generates promptline settings based on Airline colors
+	Plug 'edkolev/promptline.vim'
 	let g:airline#extensions#promptline#snapshot_file='~/.shell_prompt.sh'
 	let g:airline#extensions#promptline#enabled=1
 	let g:airline#extensions#promptline#color_template='insert'
-	"kien/ctrlp.vim
-	let g:airline#extensions#ctrlp#show_adjacent_modes=1
-
-"edkolev/promptline.vim
-if OS=='linux' || OS=='mac'
 	let g:promptline_powerline_symbols=1
 	let g:promptline_theme='airline'
-	let g:promptline_preset = {
-		\'a': [ promptline#slices#user(),promptline#slices#host({'only_if_ssh': 1}), promptline#slices#cwd()],
+	let g:promptline_preset={
+		\'a': [ promptline#slices#user(), promptline#slices#host({'only_if_ssh': 1}) ],
+		\'b': [ promptline#slices#cwd() ],
 		\'c': [ promptline#slices#vcs_branch(), promptline#slices#git_status() ],
 		\'warn': [ promptline#slices#last_exit_code() ],
 		\'options': {
 			\'left_sections': [ 'a', 'c' ],
 			\'left_only_sections': [ 'a', 'c' ]}}
-endif
 
-"dart-lang/dart-vim-plugin
-let g:dart_style_guide=1
+	" Plugin with fantastic support for surrounding
+	Plug 'tpope/vim-surround'
 
-"SirVer/ultisnips
-let g:UltiSnipsExpandTrigger='<c-y>'
-let g:UltiSnipsJumpForwardTrigger='<c-b>'
-let g:UltiSnipsJumpBackwardTrigger='<c-z>'
+	" Deletes all buffers except the one focused
+	Plug 'BufOnly.vim'
 
-"junegunn/rainbow_parentheses.vim
-let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+	" Better HTML5 support
+	Plug 'othree/html5.vim'
 
-"Valloric/YouCompleteMe
-let g:ycm_autoclose_preview_window_after_completion=1
-let g:ycm_autoclose_preview_window_after_insertion=1
+	" LESS CSS support
+	Plug 'groenewege/vim-less'
 
-"scrooloose/syntastic
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_check_on_open=1
-let g:syntastic_check_on_wq=1
-	"Use C++11
-	let g:syntastic_cpp_compiler='g++'
-	let g:syntastic_cpp_compiler_options='-std=c++11 -Wall -Wextra -Wpedantic'
+	" Colored parentheses
+	Plug 'junegunn/rainbow_parentheses.vim', { 'on': 'RainbowParentheses' }
+	let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+
+	" Distraction-free writing mode
+	Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
+
+	" Autocompletion
+	Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+	let g:ycm_autoclose_preview_window_after_completion=1
+	let g:ycm_autoclose_preview_window_after_insertion=1
+
+	" Arduino support
+	Plug '4Evergreen4/vim-hardy'
+call plug#end()
+
+set backspace=indent,eol,start "Fixes deleting with backspace
+set nocompatible "be iMproved, required
+
+set t_Co=256 "Enable 256 colors
+syntax on "Turn on syntax highlighting
+
+set number "Show line numbers
+
+set autoindent "Keep same indentation level as on previous line
+set tabstop=4 "Tab size is 4 spaces
+set shiftwidth=4
+set copyindent "Copy the previous indentation on autoindenting
+set smarttab "Insert tabs on the start of line according to shiftwidth
+
+set colorcolumn=80 "Set ruler
+
+set incsearch "Show search matches as typed
+set hlsearch "Highlight search matches
+
+set autoread "Reload file if it was changed
+
+set showcmd "Show incomplete command ("+y)
+
+set pastetoggle=<F2> "Awesome pasting mode on F2 key
+
+set scrolloff=15 "Keep 15 lines above or below when scrolling
+
+" Persistent undo
+set undofile
+set undodir=~/.nvim/undo
+
+" Encoding
+set encoding=utf-8
+set fileencoding=utf-8
+
+" Better indenting of text blocks on double pressing > or <
+vnoremap < <gv
+vnoremap > >gv
+
+" Automatic reloading of .nvimrc or nvimrc
+autocmd! BufWritePost .nvimrc source %
+autocmd! BufWritePost nvimrc source ~/.nvimrc
+
+" Leader + g to switch to relative line numbers
+nnoremap <Leader>g :call NumberToggle()<CR>
+
+" F8 to rotate between colorschemes
+nnoremap <F8> :call RotateColors()<CR>
