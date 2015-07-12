@@ -192,6 +192,7 @@ set t_Co=256 "Enable 256 colors
 syntax on "Turn on syntax highlighting
 
 set number "Show line numbers
+set laststatus=2 "Always show status bar
 
 set autoindent "Keep same indentation level as on previous line
 set tabstop=4 "Tab size is 4 spaces
