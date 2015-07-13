@@ -70,56 +70,27 @@ call plug#begin('~/.nvim/plugged')
 
 	" File browser
 	Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-	" Leader + x to open NERDTree
-	nnoremap <Leader>x :NERDTreeToggle<CR>
-	inoremap <Leader>x <ESC>:NERDTreeToggle<CR>
-
-	let NERDTreeChDirMode=2 "When directory is changed, change CWD, too
-	let NERDTreeShowHidden=1 "Show hidden files except temp, system & VCS files
-	let NERDTreeIgnore=[]
-	for suffix in split(&suffixes, ',')
-		let NERDTreeIgnore+=[ escape(suffix, '.~') . '$' ]
-	endfor
-	let NERDTreeIgnore+=[
-		\'^\.bundle$',
-		\'^\.bzr$',
-		\'^\.git$',
-		\'^\.hg$',
-		\'^\.svn$',
-		\'^\.$',
-		\'^\.\.$',
-		\'^Thumbs\.db$']
 
 	" Show Git marks in NERDTree
 	Plug 'Xuyuanp/nerdtree-git-plugin'
 
 	" Syntax checker
 	Plug 'scrooloose/syntastic'
-	let g:syntastic_always_populate_loc_list=1
-	let g:syntastic_auto_loc_list=1
-	let g:syntastic_check_on_open=1
-	let g:syntastic_check_on_wq=1
-	let g:airline#extensions#syntastic#enabled=1
 
 	" Easy commenting
 	Plug 'scrooloose/nerdcommenter'
 
 	" Snippets support
 	Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-	let g:UltiSnipsExpandTrigger='<C-Y>'
-	let g:UltiSnipsJumpForwardTrigger='<C-B>'
-	let g:UltiSnipsJumpBackwardTrigger='<C-Z>'
 
 	" Dart support
 	Plug 'dart-lang/dart-vim-plugin'
-	let g:dart_style_guide=1
 
 	" Queotes, brackets, etc. autocompletion
 	Plug 'Raimondi/delimitMate'
 
 	" File fuzzy-finder
 	Plug 'kien/ctrlp.vim'
-	let g:airline#extensions#ctrlp#show_adjacent_modes=1
 
 	" Latte templating language support
 	Plug 'Janiczek/vim-latte'
@@ -132,10 +103,6 @@ call plug#begin('~/.nvim/plugged')
 
 	" Lightweight powerline replacement
 	Plug 'bling/vim-airline'
-	let g:airline#extensions#tabline#enabled=1
-	if OS=='linux' || OS=='mac'
-		let g:airline_powerline_fonts=1
-	endif
 
 	" Better PHP support
 	Plug 'StanAngeloff/php.vim'
@@ -145,9 +112,6 @@ call plug#begin('~/.nvim/plugged')
 
 	" Generates promptline settings based on Airline colors
 	Plug 'edkolev/promptline.vim'
-	let g:airline#extensions#promptline#snapshot_file='~/.shell_prompt.sh'
-	let g:airline#extensions#promptline#enabled=1
-	let g:airline#extensions#promptline#color_template='insert'
 
 	" Plugin with fantastic support for surrounding
 	Plug 'tpope/vim-surround'
@@ -163,21 +127,18 @@ call plug#begin('~/.nvim/plugged')
 
 	" Colored parentheses
 	Plug 'junegunn/rainbow_parentheses.vim', { 'on': 'RainbowParentheses' }
-	let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 
 	" Distraction-free writing mode
 	Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 
 	" Autocompletion
 	Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
-	let g:ycm_autoclose_preview_window_after_completion=1
-	let g:ycm_autoclose_preview_window_after_insertion=1
 
 	" Arduino support
 	Plug '4Evergreen4/vim-hardy'
 call plug#end()
 
-" edkolev/promptline.vim configuration
+" edkolev/promptline.vim
 let g:promptline_powerline_symbols=1
 let g:promptline_theme='airline'
 let g:promptline_preset={
@@ -187,6 +148,57 @@ let g:promptline_preset={
 	\'warn': [ promptline#slices#last_exit_code() ],
 	\'options': {
 		\'left_sections': [ 'a', 'b', 'c' ]}}
+let g:airline#extensions#promptline#snapshot_file='~/.shell_prompt.sh'
+let g:airline#extensions#promptline#enabled=1
+let g:airline#extensions#promptline#color_template='insert'
+
+" scroloose/NERDTree
+let NERDTreeChDirMode=2 "When directory is changed, change CWD, too
+let NERDTreeShowHidden=1 "Show hidden files except temp, system & VCS files
+let NERDTreeIgnore=[]
+for suffix in split(&suffixes, ',')
+	let NERDTreeIgnore+=[ escape(suffix, '.~') . '$' ]
+endfor
+let NERDTreeIgnore+=[
+	\'^\.bundle$',
+	\'^\.bzr$',
+	\'^\.git$',
+	\'^\.hg$',
+	\'^\.svn$',
+	\'^\.$',
+	\'^\.\.$',
+	\'^Thumbs\.db$']
+
+" scroloose/syntastic
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_check_on_open=1
+let g:syntastic_check_on_wq=1
+let g:airline#extensions#syntastic#enabled=1
+
+" SirVer/Ultisnips
+let g:UltiSnipsExpandTrigger='<C-Y>'
+let g:UltiSnipsJumpForwardTrigger='<C-B>'
+let g:UltiSnipsJumpBackwardTrigger='<C-Z>'
+
+" dart-lang/dart-vim-plugin
+let g:dart_style_guide=1
+
+" kien/ctrlp.vim
+let g:airline#extensions#ctrlp#show_adjacent_modes=1
+
+" bling/vim-airline
+let g:airline#extensions#tabline#enabled=1
+if OS=='linux' || OS=='mac'
+	let g:airline_powerline_fonts=1
+endif
+
+" junegunn/rainbow_parentheses.vim
+let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+
+" Valloric/YouCompleteMe
+let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_autoclose_preview_window_after_insertion=1
 
 set backspace=indent,eol,start "Fixes deleting with backspace
 set nocompatible "be iMproved, required
@@ -227,6 +239,10 @@ set fileencoding=utf-8
 " Better indenting of text blocks on double pressing > or <
 vnoremap < <gv
 vnoremap > >gv
+
+" Leader + x to open NERDTree
+nnoremap <Leader>x :NERDTreeToggle<CR>
+inoremap <Leader>x <ESC>:NERDTreeToggle<CR>
 
 " Automatic reloading of .nvimrc or nvimrc
 autocmd! BufWritePost .nvimrc source %
