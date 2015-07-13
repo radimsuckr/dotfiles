@@ -140,6 +140,9 @@ call plug#begin('~/.nvim/plugged')
 	" Better PHP support
 	Plug 'StanAngeloff/php.vim'
 
+	" Better Python support
+	Plug 'hdima/python-syntax'
+
 	" Generates promptline settings based on Airline colors
 	Plug 'edkolev/promptline.vim'
 	let g:airline#extensions#promptline#snapshot_file='~/.shell_prompt.sh'
