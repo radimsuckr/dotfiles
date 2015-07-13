@@ -29,6 +29,7 @@ plugins=(vi-mode git python gitignore django pip virtualenv suse)
 
 # User configuration
 export PATH="$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/bin/X11"
+export TERM=xterm-256color
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
