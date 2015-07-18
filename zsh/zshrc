@@ -12,7 +12,7 @@ source ~/.shell_prompt.sh
 # Case sensitive completion
 CASE_SENSITIVE="true"
 
-export UPDATE_ZSH_DAYS=7
+export UPDATE_ZSH_DAYS=14
 
 # Display three red dots while waiting for completion
 COMPLETION_WAITING_DOTS="true"
