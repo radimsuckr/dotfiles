@@ -110,6 +110,9 @@ call plug#begin('~/.nvim/plugged')
 	" Better Python support
 	Plug 'hdima/python-syntax'
 
+	" virtualenv support
+	Plug 'https://github.com/jmcantrell/vim-virtualenv'
+
 	" Generates promptline settings based on Airline colors
 	Plug 'edkolev/promptline.vim'
 
@@ -143,7 +146,7 @@ let g:promptline_powerline_symbols=1
 let g:promptline_theme='airline'
 let g:promptline_preset={
 	\'a': [ promptline#slices#user(), promptline#slices#host({'only_if_ssh': 1}) ],
-	\'b': [ promptline#slices#cwd() ],
+	\'b': [ promptline#slices#python_virtualenv(), promptline#slices#cwd() ],
 	\'c': [ promptline#slices#vcs_branch(), promptline#slices#git_status() ],
 	\'warn': [ promptline#slices#last_exit_code() ],
 	\'options': {
@@ -189,6 +192,7 @@ let g:airline#extensions#ctrlp#show_adjacent_modes=1
 
 " bling/vim-airline
 let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#virtualenv#enabled=1
 if OS=='linux' || OS=='mac'
 	let g:airline_powerline_fonts=1
 endif
