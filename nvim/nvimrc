@@ -65,6 +65,7 @@ endif
 
 " Plugins
 call plug#begin('~/.nvim/plugged')
+	" EDITOR PLUGINS
 	" Required by a lot of Vim plugins
 	Plug 'L9'
 
@@ -83,44 +84,48 @@ call plug#begin('~/.nvim/plugged')
 	" Snippets support
 	Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
-	" Dart support
-	Plug 'dart-lang/dart-vim-plugin'
-
 	" Queotes, brackets, etc. autocompletion
 	Plug 'Raimondi/delimitMate'
 
 	" File fuzzy-finder
 	Plug 'kien/ctrlp.vim'
 
-	" Latte templating language support
-	Plug 'Janiczek/vim-latte'
-
 	" Dark color scheme
 	"Plug 'Grelek/badwolf'
 
-	" Light (Google Material-like) color scheme
+	" Google Material-like color scheme
 	Plug 'NLKNguyen/papercolor-theme'
 
-	" Lightweight powerline replacement
+	" Lightweight powerline alternative
 	Plug 'bling/vim-airline'
 
-	" Better PHP support
-	Plug 'StanAngeloff/php.vim'
-
-	" Better Python support
-	Plug 'hdima/python-syntax'
-
-	" virtualenv support
-	Plug 'https://github.com/jmcantrell/vim-virtualenv'
-
-	" Generates promptline settings based on Airline colors
+	" Generates prompt settings based on Airline colors
 	Plug 'edkolev/promptline.vim'
 
 	" Plugin with fantastic support for surrounding
 	Plug 'tpope/vim-surround'
 
+	" Distraction-free writing mode
+	Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
+
+	" Autocompletion
+	Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+
+	" Colored parentheses
+	Plug 'junegunn/rainbow_parentheses.vim', { 'on': 'RainbowParentheses' }
+
 	" Deletes all buffers except the one focused
 	Plug 'BufOnly.vim'
+
+	" LANGUAGE PLUGINS
+	" Better PHP support
+	Plug 'StanAngeloff/php.vim'
+
+	" Latte templating language support
+	Plug 'Janiczek/vim-latte'
+
+	" Dart support
+	Plug 'dart-lang/dart-vim-plugin'
 
 	" Better HTML5 support
 	Plug 'othree/html5.vim'
@@ -128,14 +133,11 @@ call plug#begin('~/.nvim/plugged')
 	" LESS CSS support
 	Plug 'groenewege/vim-less'
 
-	" Colored parentheses
-	Plug 'junegunn/rainbow_parentheses.vim', { 'on': 'RainbowParentheses' }
+	" Better Python support
+	Plug 'hdima/python-syntax'
 
-	" Distraction-free writing mode
-	Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
-
-	" Autocompletion
-	Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+	" virtualenv support
+	Plug 'jmcantrell/vim-virtualenv'
 
 	" Arduino support
 	Plug '4Evergreen4/vim-hardy'
