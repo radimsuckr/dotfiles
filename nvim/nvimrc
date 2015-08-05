@@ -1,4 +1,3 @@
-" Functions
 " """""""""
 " Get operating system
 function! GetRunningOS()
@@ -82,7 +81,9 @@ call plug#begin('~/.nvim/plugged')
 	Plug 'scrooloose/nerdcommenter'
 
 	" Snippets support
+	if has('python')
 	Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+	endif
 
 	" Queotes, brackets, etc. autocompletion
 	Plug 'Raimondi/delimitMate'
@@ -100,7 +101,9 @@ call plug#begin('~/.nvim/plugged')
 	Plug 'bling/vim-airline'
 
 	" Generates prompt settings based on Airline colors
+	if OS=='linux'
 	Plug 'edkolev/promptline.vim'
+	endif
 
 	" Plugin with fantastic support for surrounding
 	Plug 'tpope/vim-surround'
@@ -109,7 +112,9 @@ call plug#begin('~/.nvim/plugged')
 	Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 
 	" Autocompletion
+	if OS=='linux'
 	Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+	endif
 
 	" Colored parentheses
 	Plug 'junegunn/rainbow_parentheses.vim', { 'on': 'RainbowParentheses' }
@@ -144,6 +149,7 @@ call plug#begin('~/.nvim/plugged')
 call plug#end()
 
 " edkolev/promptline.vim
+if OS=='linux'
 let g:promptline_powerline_symbols=1
 let g:promptline_theme='airline'
 let g:promptline_preset={
@@ -156,6 +162,7 @@ let g:promptline_preset={
 let g:airline#extensions#promptline#snapshot_file='~/.shell_prompt.sh'
 let g:airline#extensions#promptline#enabled=1
 let g:airline#extensions#promptline#color_template='insert'
+endif
 
 " scroloose/NERDTree
 let NERDTreeChDirMode=2 "When directory is changed, change CWD, too
@@ -182,9 +189,11 @@ let g:syntastic_check_on_wq=1
 let g:airline#extensions#syntastic#enabled=1
 
 " SirVer/Ultisnips
+if has('python')
 let g:UltiSnipsExpandTrigger='<C-Y>'
 let g:UltiSnipsJumpForwardTrigger='<C-B>'
 let g:UltiSnipsJumpBackwardTrigger='<C-Z>'
+endif
 
 " dart-lang/dart-vim-plugin
 let g:dart_style_guide=1
@@ -203,8 +212,10 @@ endif
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 
 " Valloric/YouCompleteMe
+if OS=='linux'
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_autoclose_preview_window_after_insertion=1
+endif
 
 set backspace=indent,eol,start "Fixes deleting with backspace
 set nocompatible "be iMproved, required
