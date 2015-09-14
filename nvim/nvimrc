@@ -247,6 +247,12 @@ set fileencoding=utf-8
 vnoremap < <gv
 vnoremap > >gv
 
+" Better movement for long lines
+nnoremap j gj
+nnoremap k gk
+nnoremap ^ g^
+nnoremap $ g$
+
 " Leader + x to open NERDTree
 nnoremap <Leader>x :NERDTreeToggle<CR>
 inoremap <Leader>x <ESC>:NERDTreeToggle<CR>
