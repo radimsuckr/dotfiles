@@ -80,6 +80,9 @@ call plug#begin('~/.nvim/plugged')
 	" Easy commenting
 	Plug 'scrooloose/nerdcommenter'
 
+	" editorconfig support
+	Plug 'editorconfig/editorconfig-vim'
+
 	" Snippets support
 	if has('python')
 	Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
