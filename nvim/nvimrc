@@ -51,19 +51,19 @@ endfunction
 " Configuration
 " """""""""""""
 if OS=='windows'
-	set rtp+=~/.nvim/
+	set rtp+=~/.config/nvim
 endif
 
 " Install Plug if missing
-if empty(glob('~/.nvim/autoload/plug.vim'))
-	silent !curl -fLo ~/.nvim/autoload/plug.vim --create-dirs
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
 		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 	autocmd VimEnter * PlugInstall
 endif
 
 " Plugins
-call plug#begin('~/.nvim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 	" EDITOR PLUGINS
 	" Required by a lot of Vim plugins
 	Plug 'L9'
@@ -240,7 +240,7 @@ set scrolloff=15 "Keep 15 lines above or below when scrolling
 
 " Persistent undo
 set undofile
-set undodir=~/.nvim/undo
+set undodir=~/.config/nvim/undo
 
 " Encoding
 set encoding=utf-8
