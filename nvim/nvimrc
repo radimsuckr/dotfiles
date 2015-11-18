@@ -148,7 +148,7 @@ call plug#end()
 
 " edkolev/promptline.vim
 if OS=='linux'
-let g:promptline_powerline_symbols=1
+let g:promptline_powerline_symbols=0
 let g:promptline_theme='airline'
 let g:promptline_preset={
 	\'a': [ promptline#slices#user(), promptline#slices#host({'only_if_ssh': 1}) ],
@@ -203,9 +203,7 @@ let g:airline#extensions#ctrlp#show_adjacent_modes=1
 " bling/vim-airline
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#virtualenv#enabled=1
-if OS=='linux' || OS=='mac'
-	let g:airline_powerline_fonts=1
-endif
+let g:airline_powerline_fonts=0
 
 " junegunn/rainbow_parentheses.vim
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
