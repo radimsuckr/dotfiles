@@ -39,9 +39,11 @@ source ~/<path_to_dotfiles>/zsh/zshrc
 ```
 
 ### i3
-I use [i3-gaps](https://github.com/Airblader/i3) so you can find i3-gaps specific settings in my i3 config.
+I use [i3-gaps](https://github.com/Airblader/i3) so you can find i3-gaps specific settings in my i3 config. Also instead of i3status I use i3blocks.
 
 `ln -s ~/<path_to_dotfiles>/i3/config ~/.config/i3/config`
+
+`ln -s ~/<path_to_dotfiles>/i3/i3blocks/config ~/.i3blocks.conf`
 
 Also don't forget to use [i3lock-fancy](https://github.com/Grelek/i3lock-fancy) instead of i3lock.
 
