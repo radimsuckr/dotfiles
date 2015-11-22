@@ -93,12 +93,11 @@ call plug#begin('~/.config/nvim/plugged')
 
 	" File fuzzy-finder
 	Plug 'kien/ctrlp.vim'
-
-	" Dark color scheme
-	"Plug 'Grelek/badwolf'
-
 	" Google Material-like color scheme
 	Plug 'NLKNguyen/papercolor-theme'
+
+	" badwolf fork
+	Plug 'bkruczyk/badwolf'
 
 	" Lightweight powerline alternative
 	Plug 'bling/vim-airline'
@@ -159,7 +158,7 @@ let g:promptline_preset={
 		\'left_sections': [ 'a', 'b', 'c' ]}}
 let g:airline#extensions#promptline#snapshot_file='~/.shell_prompt.sh'
 let g:airline#extensions#promptline#enabled=1
-let g:airline#extensions#promptline#color_template='insert'
+let g:airline#extensions#promptline#color_template='normal'
 endif
 
 " scroloose/NERDTree
@@ -257,10 +256,6 @@ nnoremap $ g$
 " Leader + x to open NERDTree
 nnoremap <Leader>x :NERDTreeToggle<CR>
 inoremap <Leader>x <ESC>:NERDTreeToggle<CR>
-
-" Automatic reloading of .nvimrc or nvimrc
-autocmd! BufWritePost .nvimrc source %
-autocmd! BufWritePost nvimrc source ~/.nvimrc
 
 " Leader + g to switch to relative line numbers
 nnoremap <Leader>g :call NumberToggle()<CR>
