@@ -11,7 +11,7 @@ or
 `git clone https://github.com/Grelek/dotfiles.git ~/.dotfiles`
 
 ### Neovim
-Put and modify following code block in your `~/.nvimrc`.
+Put and modify following code block in your `~/.config/nvim/init.vim`.
 
 ```viml
 so ~/<path_to_dotfiles>/nvim/nvimrc
