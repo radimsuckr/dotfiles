@@ -43,6 +43,10 @@ I use [i3-gaps](https://github.com/Airblader/i3) so you can find i3-gaps specifi
 
 `ln -s ~/<path_to_dotfiles>/i3/config ~/.config/i3/config`
 
+Also don't forget to use [i3lock-fancy](https://github.com/Grelek/i3lock-fancy) instead of i3lock.
+
+The only thing you need to do is clone i3lock-fancy in `~/bin/i3lock-fancy` or somewhere else on your `PATH` (don't forget to change the path to i3lock-fancy in `i3/config`).
+
 ### Git
 Run `touch ~/.gitconfig` and put in it following code block.
 
