@@ -38,6 +38,11 @@ source ~/<path_to_dotfiles>/zsh/zshrc
 # ... another configurations you would like
 ```
 
+### i3
+I use [i3-gaps](https://github.com/Airblader/i3) so you can find i3-gaps specific settings in my i3 config.
+
+`ln -s ~/<path_to_dotfiles>/i3/config ~/.config/i3/config`
+
 ### Git
 Run `touch ~/.gitconfig` and put in it following code block.
 
