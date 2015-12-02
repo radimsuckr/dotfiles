@@ -1,0 +1,76 @@
+#!/bin/sh
+
+# make sure everything that is needed is installed
+command -v convert >/dev/null 2>&1 || { echo >&2 "imagemagick is not installed, aborting"; exit 1; }
+command -v scrot >/dev/null 2>&1 || { echo >&2 "scrot is not installed, aborting"; exit 1; }
+command -v i3lock >/dev/null 2>&1 || { echo >&2 "i3lock is not installed, aborting"; exit 1; }
+
+IMAGE=/tmp/i3lock.png
+
+# get the lock image from script's directory
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+OVERLAY="$DIR/lock.png"
+
+# take the shot
+scrot "${IMAGE}"
+
+# calculate sizes and locations from screenshot dimensions
+WIDTH=$(convert -print "%w\n" "${IMAGE}" /dev/null)
+CENTER_X=$(expr ${WIDTH} / 2)
+HEIGHT=$(convert -print "%h\n" "${IMAGE}" /dev/null)
+CENTER_Y=$(expr ${HEIGHT} / 2)
+RADIUS=$(expr ${CENTER_Y} + 94)
+
+# set all the colors
+BG_COLOR="363330ff"
+BG_OPACITY="75%"
+FG_COLOR="c0b18bff"
+WRONG_COLOR="d17b49ff"
+STROKE_COLOR="464340ff"
+
+COLORSPACE=`convert $IMAGE -colorspace hsb -resize 1x1 txt:- | sed -E '/.*$/ {
+									N
+									s/.*\n.*([0-9]{1,2}[^\.])\.[0-9]+%\)$/\1/
+									}'`;
+if [ $COLORSPACE -gt 60 ]; then
+	TEXT_COLOR="000000"
+else
+	TEXT_COLOR="ffffff"
+fi
+
+MONITOR_COUNT=`xrandr -q | grep ' connected' | wc -l`
+if [ $MONITOR_COUNT -eq 1 ]; then
+	ANNOTATE_POS="+0+160"
+else
+	ANNOTATE_POS="-650+160" # my 2 monitors setup
+fi
+# yea it's pretty ugly but it satisfies me for now
+
+# pixelate the bg, add circle, and add colorized lock icon
+convert ${IMAGE} \
+	-level 0%,100%,0.7 \
+	-filter Gaussian \
+	-resize 25% \
+	-define filter:sigma=2 \
+	-resize 400% \
+	-font Liberation-Sans \
+	-pointsize 40 \
+	-fill \#${TEXT_COLOR} \
+	-gravity center \
+	-annotate ${ANNOTATE_POS} 'Type password to unlock' \
+	${IMAGE}
+
+# try to run i3lock-color
+i3lock \
+	--insidevercolor=00000000 --insidewrongcolor=00000000 --insidecolor=00000000 \
+	--ringvercolor=${FG_COLOR} --ringwrongcolor=${WRONG_COLOR} --ringcolor=464340ff \
+	--linecolor=00000000 --textcolor=00000000 \
+	--keyhlcolor=${FG_COLOR} --bshlcolor=${WRONG_COLOR} \
+	-i "${IMAGE}" > /dev/null
+
+# don't have i3lock-color, fallback to i3lock
+if [ $? -eq 1 ]; then
+	i3lock -u -i "${IMAGE}"
+fi
+
+rm "${IMAGE}"
