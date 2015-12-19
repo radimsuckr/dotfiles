@@ -1,5 +1,5 @@
 # Dotfiles
-Here are my configuration files for Neovim, Zsh and Git. Feel free to use.
+Here are my configuration files. Feel free to use or contribute.
 
 ## How to use
 Download this repository to `~/.dotfiles`.
