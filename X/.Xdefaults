@@ -14,3 +14,4 @@ URxvt*urlLauncher: firefox
 URxvt*scrollBar: false
 URxvt*scrollBar_right: true
 URxvt*scrollColor: #000000
+URxvt.perl-ext-common: default,clipboard
