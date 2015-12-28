@@ -2,7 +2,7 @@
 ! c o l o r s
 
 *background: #222222
-*foreground: #cccccc
+*foreground: #e6e6e6
 
 ! badwolf inspired colorscheme
 ! black
@@ -27,7 +27,7 @@
 *color6: #00ff99
 *color14: #8cffba
 ! white
-*color7: #bebebe
+*color7: #e6e6e6
 *color15: #ffffff
 
 !------------------------------------------------------------------------------
