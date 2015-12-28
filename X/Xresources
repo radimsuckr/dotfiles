@@ -4,6 +4,32 @@
 *background: #222222
 *foreground: #cccccc
 
+! badwolf inspired colorscheme
+! black
+*color0: #222222
+*color8: #777777
+! red
+*color1: #ff2c4b
+*color9: #ff4d67
+! green
+*color2: #aeee00
+*color10: #beee3b
+! yellow
+*color3: #ffa724
+*color11: #fade3e
+! blue
+*color4: #0a9dff
+*color12: #4db8ff
+! magenta
+*color5: #f22168
+*color13: #f26192
+! cyan
+*color6: #00ff99
+*color14: #8cffba
+! white
+*color7: #bebebe
+*color15: #ffffff
+
 !------------------------------------------------------------------------------
 ! u r x v t
 
