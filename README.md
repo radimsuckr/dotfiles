@@ -30,7 +30,6 @@ When you run Neovim for first time with this configuration, [vim-plug](https://g
 Just put following code block in your `~/.zshrc`. You also have to download & install [Oh My Zsh!](http://ohmyz.sh).
 
 ```zsh
-ZSH_CUSTOM=~/.dotfiles/zsh/custom
 source ~/.dotfiles/zsh/zshrc
 
 # ... another configurations you would like
