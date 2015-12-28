@@ -102,11 +102,6 @@ call plug#begin('~/.config/nvim/plugged')
 	" Lightweight powerline alternative
 	Plug 'bling/vim-airline'
 
-	" Generates prompt settings based on Airline colors
-	if OS=='linux'
-	Plug 'edkolev/promptline.vim'
-	endif
-
 	" Plugin with fantastic support for surrounding
 	Plug 'tpope/vim-surround'
 
@@ -144,22 +139,6 @@ call plug#begin('~/.config/nvim/plugged')
 	" Arduino support
 	Plug '4Evergreen4/vim-hardy'
 call plug#end()
-
-" edkolev/promptline.vim
-if OS=='linux'
-let g:promptline_powerline_symbols=0
-let g:promptline_theme='airline'
-let g:promptline_preset={
-	\'a': [ promptline#slices#user(), promptline#slices#host({'only_if_ssh': 1}) ],
-	\'b': [ promptline#slices#python_virtualenv(), promptline#slices#cwd() ],
-	\'c': [ promptline#slices#vcs_branch(), promptline#slices#git_status() ],
-	\'warn': [ promptline#slices#last_exit_code() ],
-	\'options': {
-		\'left_sections': [ 'a', 'b', 'c' ]}}
-let g:airline#extensions#promptline#snapshot_file='~/.shell_prompt.sh'
-let g:airline#extensions#promptline#enabled=1
-let g:airline#extensions#promptline#color_template='normal'
-endif
 
 " scroloose/NERDTree
 let NERDTreeChDirMode=2 "When directory is changed, change CWD, too
