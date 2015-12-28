@@ -1,0 +1,8 @@
+URxvt*font: xft:Fira Mono:size=8:antialias=true:hinting=true:autohint=true:bold
+URxvt*depth: 32
+URxvt*background: transblack
+URxvt*urlLauncher: firefox  
+URxvt*scrollBar: false
+URxvt*scrollBar_right: true
+URxvt*scrollColor: black
+URxvt.perl-ext-common: default,clipboard
