@@ -5,5 +5,5 @@ xset -b
 setxkbmap cz
 nitrogen --restore
 compton -b
-
+xrdb ~/.Xresources
 exec i3

@@ -37,9 +37,9 @@ source ~/.dotfiles/zsh/zshrc
 ```
 
 ### X
-`ln -s ~/.dotfiles/X/.Xdefaults ~/.Xdefaults`
+`ln -s ~/.dotfiles/X/Xresources ~/.Xresources`
 
-`ln -s ~/.dotfiles/X/.xinitrc ~/.xinitrc`
+`ln -s ~/.dotfiles/X/xinitrc ~/.xinitrc`
 
 ### i3
 I use [i3-gaps](https://github.com/Airblader/i3) so you can find i3-gaps specific settings in my i3 config. Also instead of i3status I use i3blocks.
