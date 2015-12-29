@@ -21,7 +21,7 @@ bindsym $mod+Shift+x exec --no-startup-id "~/.dotfiles/scripts/i3lock-fancy/lock
 # bind screenshots
 bindsym Print exec --no-startup-id "maim --format png"
 bindsym $mod+Print exec --no-startup-id "maim -s --format png"
-bindsim Shift+Print exec --no-startup-id "maim --showcursor --format png"
+bindsym Shift+Print exec --no-startup-id "maim --showcursor --format png"
 
 # rofi
 bindsym $mod+d exec rofi -show run
