@@ -6,3 +6,4 @@ URxvt*scrollBar: false
 URxvt*scrollBar_right: true
 URxvt*scrollColor: black
 URxvt.perl-ext-common: default,clipboard
+URxvt.urgentOnBell: true
