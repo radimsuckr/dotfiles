@@ -24,7 +24,7 @@ RADIUS=$(expr ${CENTER_Y} + 94)
 # set all the colors
 BG_COLOR="363330ff"
 BG_OPACITY="75%"
-FG_COLOR="c0b18bff"
+FG_COLOR="00ff99ff"
 WRONG_COLOR="d17b49ff"
 STROKE_COLOR="464340ff"
 
