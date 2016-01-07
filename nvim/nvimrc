@@ -26,28 +26,6 @@ function! NumberToggle()
 	endif
 endfunction
 
-" Rotate between colorschemes
-function! RotateColors()
-	if !exists('colors_list')
-		let colors_list=
-			\sort(map(
-			\filter(split(globpath(&rtp, "colors/*.vim"), "\n"), 'v:val !~ "^/usr/"'),
-			\"substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"))
-	endif
-
-	if !exists('colorsindex')
-		let colors_index=index(colors_list, g:colors_name)
-	endif
-
-	let colors_index=(colors_index + 1) % len(colors_list)
-	let name=colors_list[colors_index]
-
-	execute 'colorscheme' name
-	execute 'AirlineTheme' name
-	redraw
-	echo name
-endfunction
-
 " Configuration
 " """""""""""""
 if OS=='windows'
@@ -245,6 +223,3 @@ nnoremap <Leader>g :call NumberToggle()<CR>
 
 " F4 to make
 nnoremap <F4> :make!<CR>
-
-" F8 to rotate between colorschemes
-nnoremap <F8> :call RotateColors()<CR>
