@@ -93,6 +93,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 	" File fuzzy-finder
 	Plug 'kien/ctrlp.vim'
+
 	" Google Material-like color scheme
 	Plug 'NLKNguyen/papercolor-theme'
 
@@ -115,6 +116,9 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'BufOnly.vim'
 
 	" LANGUAGE PLUGINS
+	" GLSL support
+	Plug 'tikhomirov/vim-glsl'
+
 	" Better PHP support
 	Plug 'StanAngeloff/php.vim'
 
