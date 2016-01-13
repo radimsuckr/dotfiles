@@ -12,7 +12,7 @@ HOURS=$(date +%k)
 if [[ $HOURS -lt 8 || $HOURS -gt 22 ]]; then
 	xbacklight -set 0
 else
-	xbacklight -set 25
+	xbacklight -set 15
 fi
 
 exec i3
