@@ -6,6 +6,7 @@ setxkbmap cz
 nitrogen --restore
 compton -b
 xrdb ~/.Xresources
+numlockx
 
 HOURS=$(date +%k)
 if [[ $HOURS -lt 8 || $HOURS -gt 22 ]]; then
