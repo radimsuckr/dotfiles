@@ -34,9 +34,9 @@ separator=false
 interval=15
 color=#8cffba
 
-[disk-home]
+[disk]
 label=HOME
-command=/usr/lib/i3blocks/disk $HOME
+instance=/home/grelek
 interval=30
 color=#8cffba
 
