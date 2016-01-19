@@ -36,8 +36,6 @@ source ~/.dotfiles/zsh/zshrc
 ```
 
 ### X
-`ln -s ~/.dotfiles/X/Xresources ~/.Xresources`
-
 `ln -s ~/.dotfiles/X/xinitrc ~/.xinitrc`
 
 ### i3

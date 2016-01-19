@@ -5,7 +5,11 @@ xset -b
 setxkbmap cz
 nitrogen --restore
 compton -b
-xrdb ~/.Xresources
+
+cd .dotfiles/X
+xrdb Xresources
+cd $HOME
+
 numlockx
 
 HOURS=$(date +%k)
