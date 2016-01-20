@@ -50,9 +50,9 @@ fi
 convert ${IMAGE} \
 	-level 0%,100%,0.7 \
 	-filter Gaussian \
-	-resize 25% \
+	-resize 20% \
 	-define filter:sigma=2 \
-	-resize 400% \
+	-resize 500% \
 	-font Liberation-Sans \
 	-pointsize 40 \
 	-fill \#${TEXT_COLOR} \
