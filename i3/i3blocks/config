@@ -31,29 +31,29 @@ markup=none
 [memory]
 label=MEM
 separator=false
-interval=10
+interval=5
 color=#8cffba
 
 [disk]
 label=HOME
 instance=/home/grelek
-interval=30
+interval=15
 color=#8cffba
 
 [ssid]
 command=echo "$(iw dev wlo1 link | grep SSID | cut -d " " -f 2-)"
-interval=5
+interval=1
 color=#00ff99
 separator=false
 
 [iface]
 instance=wlo1
 color=#00ff99
-interval=5
+interval=1
 
 [battery]
 label=BAT
-interval=15
+interval=10
 separator=false
 color=#4db8ff
 
@@ -61,12 +61,12 @@ color=#4db8ff
 label=BRI
 # outputs rounded brightness
 command=printf '%.*f\n' 0 $(xbacklight)
-interval=5
+interval=1
 color=#0a9dff
 
 [volume]
 label=VOL
-interval=5
+interval=1
 color=#f22168
 
 [temperature]
