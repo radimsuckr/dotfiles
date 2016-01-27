@@ -12,6 +12,12 @@ cd $HOME
 
 numlockx
 
+systemctl --user import-environment DISPLAY XAUTHORITY
+
+if which dbus-update-activation-environment >/dev/null 2>&1; then
+	dbus-update-activation-environment DISPLAY XAUTHORITY
+fi
+
 HOURS=$(date +%k)
 if [[ $HOURS -lt 8 || $HOURS -gt 22 ]]; then
 	xbacklight -set 0
