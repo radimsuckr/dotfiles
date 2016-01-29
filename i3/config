@@ -167,4 +167,14 @@ bar {
 	status_command i3blocks
 	position top
 	tray_output primary
+
+	colors {
+		separator #777777
+		background #222222
+		statusline #a5a5a5
+		focused_workspace #00ff99 #00ff99 #222222
+		active_workspace #464646 #464646 #efefef
+		inactive_workspace #222222 #222222 #777777
+		urgent_workspace #f22168 #f22168 #ffffff
+	}
 }
