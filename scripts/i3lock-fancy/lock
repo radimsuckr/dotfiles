@@ -1,36 +1,29 @@
 #!/bin/sh
 
-# make sure everything that is needed is installed
-command -v convert >/dev/null 2>&1 || { echo >&2 "imagemagick is not installed, aborting"; exit 1; }
-command -v scrot >/dev/null 2>&1 || { echo >&2 "scrot is not installed, aborting"; exit 1; }
-command -v i3lock >/dev/null 2>&1 || { echo >&2 "i3lock is not installed, aborting"; exit 1; }
+# Make sure everything that is needed is available
+command -v convert > /dev/null 2>&1 || { echo >&2 "imagemagick is not installed, aborting"; exit 1; }
+command -v scrot > /dev/null 2>&1 || { echo >&2 "scrot is not installed, aborting"; exit 1; }
+command -v i3lock > /dev/null 2>&1 || { echo >&2 "i3lock is not installed, aborting"; exit 1; }
 
-IMAGE=/tmp/i3lock.png
+IMAGE=$(mktemp --suffix .png)
+scrot $IMAGE
 
-# get the lock image from script's directory
-DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-OVERLAY="$DIR/lock.png"
+WIDTH=$(convert -print "%w\n" $IMAGE /dev/null)
+CENTER_X=$(expr $WIDTH / 2)
+HEIGHT=$(convert -print "%h\n" $IMAGE /dev/null)
+CENTER_Y=$(expr $HEIGHT / 2)
+RADIUS=$(expr $CENTER_Y + 95)
 
-# take the shot
-scrot "${IMAGE}"
-
-# calculate sizes and locations from screenshot dimensions
-WIDTH=$(convert -print "%w\n" "${IMAGE}" /dev/null)
-CENTER_X=$(expr ${WIDTH} / 2)
-HEIGHT=$(convert -print "%h\n" "${IMAGE}" /dev/null)
-CENTER_Y=$(expr ${HEIGHT} / 2)
-RADIUS=$(expr ${CENTER_Y} + 94)
-
-# set all the colors
 BG_COLOR="363330ff"
 BG_OPACITY="75%"
 FG_COLOR="00ff99ff"
 WRONG_COLOR="d17b49ff"
+COLORSPACE=`convert $IMAGE -colorspace hsb -resize 1x1 txt:- | sed -E \
+	'/.*$/ {
+	N
+	s/.*\n.*([0-9]{1,2}[^\.])\.[0-9]+%\)$/\1/
+	}'`;
 
-COLORSPACE=`convert $IMAGE -colorspace hsb -resize 1x1 txt:- | sed -E '/.*$/ {
-									N
-									s/.*\n.*([0-9]{1,2}[^\.])\.[0-9]+%\)$/\1/
-									}'`;
 if [ $COLORSPACE -gt 60 ]; then
 	TEXT_COLOR="000000"
 	STROKE_COLOR="ffffff"
@@ -47,8 +40,7 @@ else
 fi
 # yea it's pretty ugly but it satisfies me for now
 
-# pixelate the bg, add circle, and add colorized lock icon
-convert ${IMAGE} \
+convert $IMAGE \
 	-level 0%,100%,0.7 \
 	-filter Gaussian \
 	-resize 20% \
@@ -56,26 +48,29 @@ convert ${IMAGE} \
 	-resize 500% \
 	-font Liberation-Sans \
 	-pointsize 50 \
-	-fill \#${TEXT_COLOR} \
-	-stroke \#${STROKE_COLOR} \
+	-fill \#$TEXT_COLOR \
+	-stroke \#$STROKE_COLOR \
 	-strokewidth 3 \
 	-gravity center \
-	-draw "text ${ANNOTATE_POS} 'Type password to unlock'" \
+	-draw "text $ANNOTATE_POS 'Type password to unlock'" \
 	-stroke none \
-	-draw "text ${ANNOTATE_POS} 'Type password to unlock'" \
-	${IMAGE}
+	-draw "text $ANNOTATE_POS 'Type password to unlock'" \
+	$IMAGE
+# Text is drawn 2 times because of stroking
+# Convert strokes the text both from inner and outer side so you stroke it,
+# draw once again and what you got is only outer stroke :)
 
-# try to run i3lock-color
+# Try to run i3lock-color
 i3lock \
 	--insidevercolor=00000000 --insidewrongcolor=00000000 --insidecolor=00000000 \
-	--ringvercolor=${FG_COLOR} --ringwrongcolor=${WRONG_COLOR} --ringcolor=464340ff \
+	--ringvercolor=$FG_COLOR --ringwrongcolor=$WRONG_COLOR --ringcolor=464340ff \
 	--linecolor=00000000 --textcolor=00000000 \
-	--keyhlcolor=${FG_COLOR} --bshlcolor=${WRONG_COLOR} \
-	-i "${IMAGE}" > /dev/null
+	--keyhlcolor=$FG_COLOR --bshlcolor=$WRONG_COLOR \
+	-i $IMAGE > /dev/null
 
-# don't have i3lock-color, fallback to i3lock
+# Fallback to i3lock
 if [ $? -eq 1 ]; then
-	i3lock -u -i "${IMAGE}"
+	i3lock -u -i $IMAGE
 fi
 
-rm "${IMAGE}"
+rm $IMAGE
