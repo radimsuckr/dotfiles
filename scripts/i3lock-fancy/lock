@@ -26,7 +26,6 @@ BG_COLOR="363330ff"
 BG_OPACITY="75%"
 FG_COLOR="00ff99ff"
 WRONG_COLOR="d17b49ff"
-STROKE_COLOR="464340ff"
 
 COLORSPACE=`convert $IMAGE -colorspace hsb -resize 1x1 txt:- | sed -E '/.*$/ {
 									N
@@ -34,8 +33,10 @@ COLORSPACE=`convert $IMAGE -colorspace hsb -resize 1x1 txt:- | sed -E '/.*$/ {
 									}'`;
 if [ $COLORSPACE -gt 60 ]; then
 	TEXT_COLOR="000000"
+	STROKE_COLOR="ffffff"
 else
 	TEXT_COLOR="ffffff"
+	STROKE_COLOR="000000"
 fi
 
 MONITOR_COUNT=`xrandr -q | grep ' connected' | wc -l`
@@ -54,10 +55,14 @@ convert ${IMAGE} \
 	-define filter:sigma=2 \
 	-resize 500% \
 	-font Liberation-Sans \
-	-pointsize 40 \
+	-pointsize 50 \
 	-fill \#${TEXT_COLOR} \
+	-stroke \#${STROKE_COLOR} \
+	-strokewidth 3 \
 	-gravity center \
-	-annotate ${ANNOTATE_POS} 'Type password to unlock' \
+	-draw "text ${ANNOTATE_POS} 'Type password to unlock'" \
+	-stroke none \
+	-draw "text ${ANNOTATE_POS} 'Type password to unlock'" \
 	${IMAGE}
 
 # try to run i3lock-color
