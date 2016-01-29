@@ -76,8 +76,9 @@ color=#f26192
 
 [mediaplayer]
 instance=spotify
-interval=5
+interval=1
 signal=10
+color=#fade3e
 
 # OpenVPN support
 #
