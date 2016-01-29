@@ -79,7 +79,10 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'Grelek/badwolf'
 
 	" Lightweight powerline alternative
-	Plug 'bling/vim-airline'
+	Plug 'vim-airline/vim-airline'
+
+	" Themes for airline
+	Plug 'vim-airline/vim-airline-themes'
 
 	" Plugin with fantastic support for surrounding
 	Plug 'tpope/vim-surround'
