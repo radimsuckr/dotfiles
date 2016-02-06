@@ -53,7 +53,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'Xuyuanp/nerdtree-git-plugin'
 
 	" Syntax checker
-	Plug 'scrooloose/syntastic'
+	Plug 'benekastah/neomake', { 'on': 'Neomake' }
 
 	" Easy commenting
 	Plug 'scrooloose/nerdcommenter'
@@ -142,12 +142,11 @@ let NERDTreeIgnore+=[
 	\'^\.\.$',
 	\'^Thumbs\.db$']
 
-" scroloose/syntastic
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_check_on_open=1
-let g:syntastic_check_on_wq=1
-let g:airline#extensions#syntastic#enabled=1
+" benekastah/neomake
+let g:neomake_c_enabled_makers=['gcc']
+let g:neomake_cpp_enabled_makers=['gcc']
+let g:neomake_java_enabled_makers=['javac']
+let g:neomake_python_enabled_makers=['python']
 
 " SirVer/ultisnips
 if has('python')
@@ -216,6 +215,9 @@ nnoremap j gj
 nnoremap k gk
 nnoremap ^ g^
 nnoremap $ g$
+
+" Run Neomake on open of new buffer and on write
+autocmd! BufWritePost * Neomake
 
 " Leader + x to open NERDTree
 nnoremap <Leader>x :NERDTreeToggle<CR>
