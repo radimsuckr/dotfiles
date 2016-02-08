@@ -1,5 +1,5 @@
 #define black #222222
-#define transblack [95]#222222
+#define transblack [90]#222222
 #define ablack #777777
 #define gray #cccccc
 #define cyan #00ff99
