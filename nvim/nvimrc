@@ -1,14 +1,3 @@
-" Toggle between relative and absolute numbers
-function! NumberToggle()
-	if &relativenumber==1
-		set norelativenumber
-		set number
-	else
-		set nonumber
-		set relativenumber
-	endif
-endfunction
-
 " Configuration
 " """""""""""""
 " Install Plug if missing
@@ -155,7 +144,10 @@ set nocompatible "be iMproved, required
 set t_Co=256 "Enable 256 colors
 syntax on "Turn on syntax highlighting
 
-set number "Show line numbers
+" Combine static and relative numbering (requires Vim 7.4+ or neovim)
+set number
+set relativenumber
+
 set laststatus=2 "Always show status bar
 
 set autoindent "Keep same indentation level as on previous line
@@ -201,9 +193,6 @@ autocmd! BufWritePost * Neomake
 " Leader + x to open NERDTree
 nnoremap <Leader>x :NERDTreeToggle<CR>
 inoremap <Leader>x <ESC>:NERDTreeToggle<CR>
-
-" Leader + g to switch to relative line numbers
-nnoremap <Leader>g :call NumberToggle()<CR>
 
 " F4 to make
 nnoremap <F4> :make!<CR>
