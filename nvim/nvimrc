@@ -1,20 +1,3 @@
-" """""""""
-" Get operating system
-function! GetRunningOS()
-	if has('win32')
-		return 'windows'
-	endif
-
-	if has('unix')
-		if system('uname')=~'Darwin'
-			return 'mac'
-		else
-			return 'linux'
-		endif
-	endif
-endfunction
-let OS=GetRunningOS()
-
 " Toggle between relative and absolute numbers
 function! NumberToggle()
 	if &relativenumber==1
@@ -28,10 +11,6 @@ endfunction
 
 " Configuration
 " """""""""""""
-if OS=='windows'
-	set rtp+=~/.config/nvim
-endif
-
 " Install Plug if missing
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
 	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
