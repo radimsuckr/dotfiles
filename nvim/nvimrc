@@ -160,6 +160,8 @@ set colorcolumn=80 "Set ruler
 
 set incsearch "Show search matches as typed
 set hlsearch "Highlight search matches
+set ignorecase
+set smartcase "If search contains uppercase letter, it's case sensitive
 
 set autoread "Reload file if it was changed
 
@@ -186,6 +188,10 @@ nnoremap j gj
 nnoremap k gk
 nnoremap ^ g^
 nnoremap $ g$
+
+" Fast switch between buffers
+nnoremap <RIGHT> :bn<CR>
+nnoremap <LEFT>  :bp<CR>
 
 " Run Neomake on open of new buffer and on write
 autocmd! BufWritePost * Neomake
