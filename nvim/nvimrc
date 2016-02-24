@@ -138,6 +138,9 @@ let g:airline_powerline_fonts=0
 " junegunn/rainbow_parentheses.vim
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 
+" hdima/python-syntax
+let python_highlight_all=1
+
 set backspace=indent,eol,start "Fixes deleting with backspace
 set nocompatible "be iMproved, required
 
