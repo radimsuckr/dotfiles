@@ -64,6 +64,9 @@ call plug#begin('~/.config/nvim/plugged')
 	" Deletes all buffers except the one focused
 	Plug 'BufOnly.vim'
 
+	" Preview colors in source
+	Plug 'ap/vim-css-color'
+
 	" LANGUAGE PLUGINS
 	" GLSL support
 	Plug 'tikhomirov/vim-glsl'
