@@ -119,6 +119,9 @@ let NERDTreeIgnore+=[
 " benekastah/neomake
 let g:neomake_c_enabled_makers=['gcc']
 let g:neomake_cpp_enabled_makers=['gcc']
+let g:neomake_cpp_gcc_maker={
+	\'args': ['--std=c++14']
+	\}
 let g:neomake_java_enabled_makers=['javac']
 let g:neomake_python_enabled_makers=['python']
 
