@@ -213,7 +213,7 @@ nnoremap <Leader>x :NERDTreeToggle<CR>
 inoremap <Leader>x <ESC>:NERDTreeToggle<CR>
 
 " Leave terminal mode by pressing ESC
-tnoremap <Esc> <C-\><C-n>
+tnoremap <Leader><Esc> <C-\><C-n>
 
 " F4 to make
 nnoremap <F4> :make!<CR>
