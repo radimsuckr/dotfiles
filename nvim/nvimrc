@@ -94,6 +94,9 @@ call plug#begin('~/.config/nvim/plugged')
 
 	" Arduino support
 	Plug '4Evergreen4/vim-hardy'
+
+	" Rust support
+	Plug 'rust-lang/rust.vim'
 call plug#end()
 
 " scroloose/NERDTree
