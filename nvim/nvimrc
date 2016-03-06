@@ -183,6 +183,8 @@ set pastetoggle=<F2> "Awesome pasting mode on F2 key
 
 set scrolloff=15 "Keep 15 lines above or below when scrolling
 
+let mapleader=" " "Set leader key
+
 " Persistent undo
 set undofile
 set undodir=~/.config/nvim/undo
