@@ -212,7 +212,6 @@ autocmd! BufWritePost * Neomake
 
 " Leader + x to open NERDTree
 nnoremap <Leader>x :NERDTreeToggle<CR>
-inoremap <Leader>x <ESC>:NERDTreeToggle<CR>
 
 " Leave terminal mode by pressing ESC
 tnoremap <Leader><Esc> <C-\><C-n>
