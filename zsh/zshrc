@@ -35,7 +35,7 @@ export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
 # Set account editor
 export EDITOR=/usr/bin/nvim
 
-alias ls='ls --group-directories-first -A --color=always --quoting-style=literal'
+alias ls='LC_COLLATE="C" ls --group-directories-first -A --color=always --quoting-style=literal'
 
 # Use nvbm/thefuck
 alias fuck='eval $(thefuck $(fc -ln -1))'
