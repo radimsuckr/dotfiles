@@ -218,3 +218,10 @@ tnoremap <Leader><Esc> <C-\><C-n>
 
 " F4 to make
 nnoremap <F4> :make!<CR>
+
+" Wrap lines instead of words
+function LineBreak()
+	setlocal wrap
+	setlocal linebreak
+endfunction
+au BufRead *.txt,*.md,*.rst call LineBreak()
