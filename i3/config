@@ -127,8 +127,8 @@ bindsym $mod+Shift+0 move container to workspace 10
 
 # brightness bindings
 bindsym $mod+i exec --no-startup-id "sleep 0.2s; xset dpms force off"
-bindsym $mod+o exec --no-startup-id "xbacklight -inc 5"
-bindsym $mod+p exec --no-startup-id "xbacklight -dec 5"
+bindsym $mod+o exec --no-startup-id "xbacklight -inc 5 -time 0"
+bindsym $mod+p exec --no-startup-id "xbacklight -dec 5 -time 0"
 
 # volume bindings
 bindsym $mod+t exec --no-startup-id "amixer sset Master toggle"
