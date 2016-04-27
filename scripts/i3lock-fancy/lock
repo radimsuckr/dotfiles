@@ -3,7 +3,7 @@
 # Make sure everything that is needed is available
 command -v convert > /dev/null 2>&1 || { echo >&2 "imagemagick is not installed, aborting"; exit 1; }
 command -v scrot > /dev/null 2>&1 || { echo >&2 "scrot is not installed, aborting"; exit 1; }
-command -v i3lock-color > /dev/null 2>&1 || { echo >&2 "i3lock-color is not installed, aborting"; exit 1; }
+command -v i3lock > /dev/null 2>&1 || { echo >&2 "i3lock is not installed, aborting"; exit 1; }
 
 IMAGE=$(mktemp --suffix .png)
 scrot $IMAGE
@@ -51,7 +51,7 @@ convert $IMAGE \
 # draw once again and what you got is only outer stroke :)
 
 # Try to run i3lock-color
-i3lock-color \
+i3lock \
 	--insidevercolor=00000000 --insidewrongcolor=00000000 --insidecolor=00000000 \
 	--ringvercolor=$FG_COLOR --ringwrongcolor=$WRONG_COLOR --ringcolor=464340ff \
 	--linecolor=00000000 --textcolor=00000000 \
