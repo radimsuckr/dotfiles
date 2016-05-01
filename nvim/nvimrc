@@ -74,6 +74,9 @@ call plug#begin('~/.config/nvim/plugged')
 	" Better PHP support
 	Plug 'StanAngeloff/php.vim'
 
+	" PGSQL support
+	Plug 'exu/pgsql.vim'
+
 	" Latte templating language support
 	Plug 'Janiczek/vim-latte'
 
