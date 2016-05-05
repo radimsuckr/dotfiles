@@ -1,7 +1,7 @@
-URxvt*font: xft:Fira Mono:size=8:antialias=true:hinting=true:autohint=true:bold
+URxvt*font: xft:Terminus:size=8:antialias=true:hinting=true:autohint=true
 URxvt*depth: 32
 URxvt*background: transblack
-URxvt*urlLauncher: firefox  
+URxvt*urlLauncher: firefox
 URxvt*scrollBar: false
 URxvt*scrollBar_right: true
 URxvt*scrollColor: black
