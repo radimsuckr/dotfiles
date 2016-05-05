@@ -77,6 +77,9 @@ call plug#begin('~/.config/nvim/plugged')
 	" PGSQL support
 	Plug 'exu/pgsql.vim'
 
+	" CoffeeScript support
+	Plug 'kchmck/vim-coffee-script'
+
 	" Latte templating language support
 	Plug 'Janiczek/vim-latte'
 
@@ -121,6 +124,7 @@ let NERDTreeIgnore+=[
 
 " benekastah/neomake
 let g:neomake_c_enabled_makers=['gcc']
+let g:neomake_coffee_enabled_makers=['coffeelint']
 let g:neomake_cpp_enabled_makers=['gcc']
 let g:neomake_cpp_gcc_maker={
 	\'args': ['--std=c++14']
