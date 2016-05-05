@@ -4,21 +4,13 @@ rofi.width: 60
 rofi.lines: 15
 rofi.columns: 1
 rofi.font: Liberation Sans 14
-rofi.fg: gray
-rofi.bg: black
-rofi.bgalt: black
-rofi.hlfg: black
-rofi.hlbg: cyan
-rofi.hlfg-active: black
-rofi.hlbg-active: cyan
-rofi.fg-active: black
-rofi.bg-active: bcyan
-rofi.fg-urgent: white
-rofi.bg-urgent: bred
-rofi.hlfg-urgent: white
-rofi.hlbg-urgent: red
-rofi.bc: cyan
-rofi.color-enabled: false
+rofi.color-enabled: true
+! background,border,separator
+rofi.color-window: black,cyan,cyan
+! background,foreground,alt background,high background, high foreground
+rofi.color-normal: black,gray,black,cyan,black
+rofi.color-active: bcyan,black,black,cyan,black
+rofi.color-urgent: bred,white,black,red,white
 rofi.bw: 2
 rofi.location: 0
 rofi.padding: 25
