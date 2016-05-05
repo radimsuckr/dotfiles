@@ -28,9 +28,9 @@ bindsym $mod+d exec rofi -show run
 bindsym $mod+Shift+w exec rofi -show window
 
 # gaps
-for_window [class="^.*"] border pixel 2.5
+for_window [class="^.*"] border pixel 2
 gaps inner 15
-gaps outer 15
+gaps outer 0
 smart_gaps on
 smart_borders on
 
