@@ -210,10 +210,6 @@ nnoremap k gk
 nnoremap ^ g^
 nnoremap $ g$
 
-" Fast switch between buffers
-nnoremap <RIGHT> :bn<CR>
-nnoremap <LEFT>  :bp<CR>
-
 " Run Neomake on open of new buffer and on write
 autocmd! BufWritePost * Neomake
 
