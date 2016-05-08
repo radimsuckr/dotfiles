@@ -47,6 +47,9 @@ I use [i3-gaps](https://github.com/Airblader/i3) so you can find i3-gaps specifi
 
 There's also ready i3lock script in `scripts/i3lock-fancy`. View its own readme file for more information.
 
+### ranger
+`ln -s ~/.dotfiles/ranger ~/.config/ranger`
+
 ### dunst
 `ln -s ~/.dotfiles/dunst/dunstrc ~/.config/dunst/dunstrc`
 
