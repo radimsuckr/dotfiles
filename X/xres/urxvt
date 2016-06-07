@@ -1,4 +1,5 @@
-URxvt*font: xft:Terminus:size=8:antialias=true:hinting=true:autohint=true
+URxvt*font: xft:meslo lg m dz:pixelsize=10:antialias=true:hinting=true:autohint=true:bold
+URxvt.letterSpace: -1
 URxvt*depth: 32
 URxvt*background: transblack
 URxvt*urlLauncher: firefox

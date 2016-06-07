@@ -36,7 +36,7 @@ convert $IMAGE \
 	-resize 20% \
 	-define filter:sigma=2 \
 	-resize 500% \
-	-font Liberation-Sans \
+	-font Roboto \
 	-pointsize 50 \
 	-fill \#$TEXT_COLOR \
 	-stroke \#$STROKE_COLOR \

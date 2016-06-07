@@ -3,7 +3,7 @@ rofi.opacity: 100
 rofi.width: 60
 rofi.lines: 15
 rofi.columns: 1
-rofi.font: Liberation Sans 14
+rofi.font: Roboto Condensed 14
 rofi.color-enabled: true
 ! background,border,separator
 rofi.color-window: black,cyan,cyan
