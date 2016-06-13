@@ -19,9 +19,9 @@ bindsym $mod+Shift+q kill
 bindsym $mod+Shift+x exec --no-startup-id "~/.dotfiles/scripts/i3lock/lock"
 
 # bind screenshots
-bindsym Print exec --no-startup-id "maim --format png"
-bindsym $mod+Print exec --no-startup-id "maim -s --format png"
-bindsym Shift+Print exec --no-startup-id "maim --showcursor --format png"
+bindsym Print exec --no-startup-id "maim --format png --opengl ~/pictures/screenshots"
+bindsym $mod+Print exec --no-startup-id "maim -s --format png --opengl ~/pictures/screenshots"
+bindsym Shift+Print exec --no-startup-id "maim --showcursor --format png --opengl ~/pictures/screenshots"
 
 # rofi
 bindsym $mod+d exec rofi -show run

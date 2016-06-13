@@ -6,7 +6,7 @@ command -v maim > /dev/null 2>&1 || { echo >&2 "maim is not installed, aborting"
 command -v i3lock > /dev/null 2>&1 || { echo >&2 "i3lock is not installed, aborting"; exit 1; }
 
 IMAGE=$(mktemp --suffix .png)
-maim --format png $IMAGE
+maim --format png --opengl $IMAGE
 
 WIDTH=$(convert -print "%w\n" $IMAGE /dev/null)
 CENTER_X=$(expr $WIDTH / 2)
