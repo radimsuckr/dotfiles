@@ -2,11 +2,11 @@
 
 # Make sure everything that is needed is available
 command -v convert > /dev/null 2>&1 || { echo >&2 "imagemagick is not installed, aborting"; exit 1; }
-command -v scrot > /dev/null 2>&1 || { echo >&2 "scrot is not installed, aborting"; exit 1; }
+command -v maim > /dev/null 2>&1 || { echo >&2 "maim is not installed, aborting"; exit 1; }
 command -v i3lock > /dev/null 2>&1 || { echo >&2 "i3lock is not installed, aborting"; exit 1; }
 
 IMAGE=$(mktemp --suffix .png)
-scrot $IMAGE
+maim --format png $IMAGE
 
 WIDTH=$(convert -print "%w\n" $IMAGE /dev/null)
 CENTER_X=$(expr $WIDTH / 2)
