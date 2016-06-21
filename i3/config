@@ -131,9 +131,11 @@ bindsym $mod+o exec --no-startup-id "xbacklight -inc 5 -time 0"
 bindsym $mod+p exec --no-startup-id "xbacklight -dec 5 -time 0"
 
 # volume bindings
-bindsym $mod+t exec --no-startup-id "amixer sset Master toggle"
-bindsym $mod+z exec --no-startup-id "amixer sset Master 5%+"
-bindsym $mod+u exec --no-startup-id "amixer sset Master 5%-"
+bindsym XF86AudioMute exec --no-startup-id "amixer sset Master toggle; pkill -RTMIN+2 i3blocks"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer sset Master 5%+; pkill -RTMIN+2 i3blocks"
+bindsym XF86AudioLowerVolume exec --no-startup-id "amixer sset Master 5%-; pkill -RTMIN+2 i3blocks"
+bindsym $mod+XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +5%; pkill -RTMIN+1 i3blocks"
+bindsym $mod+XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -5%; pkill -RTMIN+1 i3blocks"
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
