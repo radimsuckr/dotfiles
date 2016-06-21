@@ -126,9 +126,9 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # brightness bindings
-bindsym $mod+i exec --no-startup-id "sleep 0.2s; xset dpms force off"
-bindsym $mod+o exec --no-startup-id "xbacklight -inc 5 -time 0"
-bindsym $mod+p exec --no-startup-id "xbacklight -dec 5 -time 0"
+bindsym XF86Sleep exec --no-startup-id "sleep 0.2s; xset dpms force off"
+bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 5 -time 0; pkill -RTMIN+1 i3blocks"
+bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 5 -time 0; pkill -RTMIN+1 i3blocks"
 
 # volume bindings
 bindsym XF86AudioMute exec --no-startup-id "amixer sset Master toggle; pkill -RTMIN+2 i3blocks"
