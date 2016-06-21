@@ -20,7 +20,7 @@ COMPLETION_WAITING_DOTS="true"
 # Date format for history stamps
 HIST_STAMPS="dd/mm/yyyy"
 
-plugins=(archlinux colored-man-pages django encode64 git gitignore nmap pip python virtualenv vi-mode)
+plugins=(colored-man-pages django encode64 git gitignore nmap pip python virtualenv vi-mode)
 
 # User configuration
 export PATH="$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/bin/X11"
@@ -39,4 +39,3 @@ alias ls='LC_COLLATE="C" ls --group-directories-first -A --color=always --quotin
 
 # Use nvbm/thefuck
 alias fuck='eval $(thefuck $(fc -ln -1))'
-alias FUCK='fuck'
