@@ -14,12 +14,6 @@ call plug#begin('~/.config/nvim/plugged')
 	" Required by a lot of Vim plugins
 	Plug 'L9'
 
-	" File browser
-	Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-
-	" Show Git marks in NERDTree
-	Plug 'Xuyuanp/nerdtree-git-plugin'
-
 	" Syntax checker
 	Plug 'benekastah/neomake', { 'on': 'Neomake' }
 
@@ -105,22 +99,13 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'rust-lang/rust.vim'
 call plug#end()
 
-" scroloose/NERDTree
-let NERDTreeChDirMode=2 "When directory is changed, change CWD, too
-let NERDTreeShowHidden=1 "Show hidden files except temp, system & VCS files
-let NERDTreeIgnore=[]
-for suffix in split(&suffixes, ',')
-	let NERDTreeIgnore+=[ escape(suffix, '.~') . '$' ]
-endfor
-let NERDTreeIgnore+=[
-	\'^\.bundle$',
-	\'^\.bzr$',
-	\'^\.git$',
-	\'^\.hg$',
-	\'^\.svn$',
-	\'^\.$',
-	\'^\.\.$',
-	\'^Thumbs\.db$']
+" netrw
+let g:netrw_altv=1
+let g:netrw_banenr=0
+let g:netrw_browse_split=4
+let g:netrw_liststyle=3
+let g:netrw_winsize=-35
+let g:netrw_bufsettings='noma nomod nu nobl nowrap ro rnu'
 
 " benekastah/neomake
 let g:neomake_c_enabled_makers=['gcc']
@@ -213,8 +198,8 @@ nnoremap $ g$
 " Run Neomake on open of new buffer and on write
 autocmd! BufWritePost * Neomake
 
-" Leader + x to open NERDTree
-nnoremap <Leader>x :NERDTreeToggle<CR>
+" Leader + x to open netrw
+nnoremap <Leader>x :Lexplore<CR>
 
 " Leave terminal mode by pressing ESC
 tnoremap <Leader><Esc> <C-\><C-n>
