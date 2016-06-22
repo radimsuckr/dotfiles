@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+iw dev wlo1 link | \
+grep SSID | \
+cut -d ' ' -f 2-

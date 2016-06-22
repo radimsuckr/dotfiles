@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+# TODO: When closing Spotify, some null garbage is shown
+
+if [[ ! `playerctl -l` ]]; then
+	exit 0;
+else
+	echo "`playerctl metadata artist` - `playerctl metadata title`";
+fi
+
+if [[ ${BLOCK_BUTTON} -eq 4 ]]; then
+	playerctl next
+elif [[ ${BLOCK_BUTTON} -eq 5 ]]; then
+	playerctl previous
+elif [[ ${BLOCK_BUTTON} -eq 1 ]]; then
+	playerctl play-pause
+fi

@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+# TODO: Fix blinking when changing volume using mouse
+
+amixer get Master | \
+grep % | \
+head -1 | \
+awk '{if (toupper($6) == "[ON]") {print $5} else {print "OFF"}}' | \
+tr -d '[]%'
+
+if [[ ${BLOCK_BUTTON} -eq 4 ]]; then
+	amixer sset Master 5%+
+elif [[ ${BLOCK_BUTTON} -eq 5 ]]; then
+	amixer sset Master 5%-
+elif [[ ${BLOCK_BUTTON} -eq 1 ]]; then
+	amixer sset Master toggle
+fi

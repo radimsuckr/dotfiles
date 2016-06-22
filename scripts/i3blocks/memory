@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+cat /proc/meminfo | \
+grep -i 'memavailable' | \
+awk '{print substr($2/1000/1000, 0, 3) "G"}'

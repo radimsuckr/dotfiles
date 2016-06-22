@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+df -h /home | \
+grep G | \
+awk '{print $4}'

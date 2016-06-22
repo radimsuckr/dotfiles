@@ -24,68 +24,72 @@
 #
 # The top properties below are applied to every block, but can be overridden.
 # Each block command defaults to the script name to avoid boilerplate.
-command=/usr/lib/i3blocks/$BLOCK_NAME
-separator_block_width=10
-markup=none
+command=~/.dotfiles/scripts/i3blocks/$BLOCK_NAME
+separator_block_width=12
+markup=pango
+border_top=0
+border_left=0
+border_right=0
+border_bottom=2
 
 [memory]
 label=MEM
-separator=false
 interval=5
 color=#8cffba
+border=#8cffba
+separator=false
 
-[disk]
-label=HOME
-instance=/home/grelek
+[storage]
+label=STOR
 interval=15
 color=#8cffba
+border=#8cffba
 
 [ssid]
-command=echo "$(iw dev wlo1 link | grep SSID | cut -d " " -f 2-)"
 interval=1
 color=#00ff99
+border=#00ff99
 separator=false
 
 [iface]
 instance=wlo1
 color=#00ff99
+border=#00ff99
 interval=1
 
 [battery]
 label=BAT
 interval=10
-separator=false
 color=#4db8ff
+border=#4db8ff
 
 [brightness]
 label=BRI
-# outputs rounded brightness
-command=printf '%.*f\n' 0 $(xbacklight)
-interval=1
+interval=once
+signal=1
 color=#0a9dff
+border=#0a9dff
 
 [volume]
 label=VOL
 interval=1
+signal=2
 color=#f22168
+border=#f22168
 
 [temperature]
 label=TEMP
 interval=5
 color=#f26192
+border=#f26192
 
 [mediaplayer]
 interval=1
 signal=10
 color=#fade3e
-
-# OpenVPN support
-#
-# Support multiple VPN, with colors.
-#[openvpn]
-#interval=20
+border=#fade3e
 
 [time]
-command=date '+%d.%m. %Y %H:%M'
 interval=5
 color=#ffa724
+border=#ffa724

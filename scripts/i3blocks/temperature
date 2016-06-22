@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+sensors | \
+grep -i 'physical' | \
+awk '{print $4}' | \
+tr -d '+'
