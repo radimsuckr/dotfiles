@@ -134,8 +134,8 @@ bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 5 -time 0; p
 bindsym XF86AudioMute exec --no-startup-id "amixer sset Master toggle; pkill -RTMIN+2 i3blocks"
 bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer sset Master 5%+; pkill -RTMIN+2 i3blocks"
 bindsym XF86AudioLowerVolume exec --no-startup-id "amixer sset Master 5%-; pkill -RTMIN+2 i3blocks"
-bindsym $mod+XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +5%; pkill -RTMIN+1 i3blocks"
-bindsym $mod+XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -5%; pkill -RTMIN+1 i3blocks"
+bindsym $mod+XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +5%; pkill -RTMIN+2 i3blocks"
+bindsym $mod+XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -5%; pkill -RTMIN+2 i3blocks"
 
 # playerctl bindings
 bindsym XF86AudioPlay exec --no-startup-id "playerctl play"
