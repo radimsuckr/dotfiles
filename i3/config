@@ -16,7 +16,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # bind lock
-bindsym $mod+Shift+x exec --no-startup-id "~/.dotfiles/scripts/i3lock-fancy/lock"
+bindsym $mod+Shift+x exec --no-startup-id "~/.dotfiles/scripts/i3lock/lock"
 
 # bind screenshots
 bindsym Print exec --no-startup-id "maim --format png"
