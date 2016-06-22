@@ -1,4 +1,4 @@
-# i3lock-fancy
+# i3lock
 
 Originally created by [meskarune](https://github.com/meskarune).
 
@@ -7,8 +7,8 @@ Script that takes a screenshot of the desktop, blurs the background and adds a l
 ## Dependencies:
 - [i3lock-color-git](https://github.com/eBrnd/i3lock-color)
 - imagemagick
-- scrot
-- Liberation Fonts
+- maim
+- Roboto Fonts
 
 You can use this with `xautolock` to automatically lock the screen after some time.
 

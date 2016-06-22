@@ -33,9 +33,9 @@ fi
 convert $IMAGE \
 	-level 0%,100%,0.7 \
 	-filter Gaussian \
-	-resize 20% \
+	-resize 25% \
 	-define filter:sigma=2 \
-	-resize 500% \
+	-resize 400% \
 	-font Roboto \
 	-pointsize 50 \
 	-fill \#$TEXT_COLOR \
