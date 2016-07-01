@@ -19,7 +19,7 @@ if which dbus-update-activation-environment >/dev/null 2>&1; then
 fi
 
 HOURS=$(date +%k)
-if [[ $HOURS -lt 8 || $HOURS -gt 22 ]]; then
+if [[ $HOURS -le 8 || $HOURS -ge 22 ]]; then
 	xbacklight -set 0
 else
 	xbacklight -set 15
