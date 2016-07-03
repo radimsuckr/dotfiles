@@ -38,7 +38,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'NLKNguyen/papercolor-theme'
 
 	" badwolf fork
-	Plug 'Grelek/badwolf'
+	Plug 'Grelek/goodwolf'
 
 	" Lightweight powerline alternative
 	Plug 'vim-airline/vim-airline'
