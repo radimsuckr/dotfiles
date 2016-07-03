@@ -4,8 +4,6 @@ Here are my configuration files. Feel free to use or contribute.
 ## How to use
 Download this repository to `~/.dotfiles`.
 
-`git clone git@github.com:Grelek/dotfiles.git ~/.dotfiles`
-or
 `git clone https://github.com/Grelek/dotfiles.git ~/.dotfiles`
 
 ### Neovim
@@ -19,7 +17,7 @@ so ~/.dotfiles/nvim/nvimrc
 "so ~/.dotfiles/nvim/transparent_background
 
 colorscheme <your_choice>
-let g:airline_theme='<your_choice>'
+"let g:airline_theme='<your_choice>'
 
 " ... another configurations you would like
 ```
@@ -43,9 +41,10 @@ I use [i3-gaps](https://github.com/Airblader/i3) so you can find i3-gaps specifi
 
 `ln -s ~/.dotfiles/i3/config ~/.config/i3/config`
 
-`ln -s ~/.dotfiles/i3/i3blocks/config ~/.i3blocks.conf`
+#### i3blocks
+`ln -s ~/.dotfiles/i3blocks/config ~/.i3blocks.conf`
 
-There's also ready i3lock script in `scripts/i3lock-fancy`. View its own readme file for more information.
+There's also ready i3lock script in `scripts/i3lock`. View its own readme file for more information.
 
 ### ranger
 `ln -s ~/.dotfiles/ranger ~/.config/ranger`
