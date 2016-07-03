@@ -2,7 +2,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
 ZSH_CUSTOM=$HOME/.dotfiles/zsh/custom
-ZSH_THEME="kelerg"
+ZSH_THEME="kelerg2"
 
 # Case sensitive completion
 CASE_SENSITIVE="true"
