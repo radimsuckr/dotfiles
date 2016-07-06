@@ -58,7 +58,7 @@ border=#4db8ff
 
 [brightness]
 label=BRI
-interval=once
+interval=1
 signal=1
 color=#0a9dff
 border=#0a9dff
