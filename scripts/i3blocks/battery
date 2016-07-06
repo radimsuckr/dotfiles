@@ -3,8 +3,19 @@
 BATTERY=`acpi | \
 awk '{print substr(toupper($3), 0, 3), $4, substr($5, 0, 5)}' | \
 tr -d ',FUL'`
+LEVEL=`acpi | awk '{print $4}' | tr -d '%,'`
 
 echo $BATTERY
 echo $BATTERY
+
+if [[ $LEVEL -le 75 ]] && [[ $LEVEL -gt 50 ]]; then
+	echo \#aeee00
+fi
+if [[ $LEVEL -le 50 ]] && [[ $LEVEL -gt 30 ]]; then
+	echo \#ffa724
+fi
+if [[ $LEVEL -le 30 ]]; then
+	echo \#ff2c4b
+fi
 
 exit
