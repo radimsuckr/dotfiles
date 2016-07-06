@@ -1,11 +1,17 @@
 #!/usr/bin/env sh
 
-if [[ ${BLOCK_BUTTON} -eq 4 ]]; then
-	xbacklight -inc 5 -time 0
-elif [[ ${BLOCK_BUTTON} -eq 5 ]]; then
-	xbacklight -dec 5 -time 0
-elif [[ ${BLOCK_BUTTON} -eq 1 ]]; then
-	xset dpms force off
-fi
+case ${BLOCK_BUTTON} in
+	1)
+		xset dpms force off
+		;;
+	4)
+		xbacklight -inc 5 -time 0
+		;;
+	5)
+		xbacklight -dec 5 -time 0
+		;;
+esac
 
-printf '%.*f\n' 0 $(xbacklight)
+printf '%.*f' 0 $(xbacklight)
+
+exit

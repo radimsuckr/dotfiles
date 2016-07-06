@@ -2,15 +2,24 @@
 # TODO: When closing Spotify, some null garbage is shown
 
 if [[ ! `playerctl -l` ]]; then
-	exit 0;
+	exit
 else
-	echo "`playerctl metadata artist` - `playerctl metadata title`";
+	ARTIST=`playerctl metadata artist`
+	TITLE=`playerctl metadata title`
+
+	echo "`playerctl metadata artist` - `playerctl metadata title`"
 fi
 
-if [[ ${BLOCK_BUTTON} -eq 4 ]]; then
-	playerctl next
-elif [[ ${BLOCK_BUTTON} -eq 5 ]]; then
-	playerctl previous
-elif [[ ${BLOCK_BUTTON} -eq 1 ]]; then
-	playerctl play-pause
-fi
+case ${BLOCK_BUTTON} in
+	1)
+		playerctl play-pause
+		;;
+	4)
+		playerctl next
+		;;
+	5)
+		playerctl previous
+		;;
+esac
+
+exit

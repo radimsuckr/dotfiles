@@ -1,5 +1,10 @@
 #!/usr/bin/env sh
 
-df -h /home | \
+STORAGE=`df -h /home | \
 grep G | \
-awk '{print $4}'
+awk '{print $4}'`
+
+echo $STORAGE
+echo $STORAGE
+
+exit

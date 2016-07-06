@@ -1,5 +1,10 @@
 #!/usr/bin/env sh
 
-acpi | \
+BATTERY=`acpi | \
 awk '{print substr(toupper($3), 0, 3), $4, substr($5, 0, 5)}' | \
-tr -d ',FUL'
+tr -d ',FUL'`
+
+echo $BATTERY
+echo $BATTERY
+
+exit

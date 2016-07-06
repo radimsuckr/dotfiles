@@ -1,6 +1,11 @@
 #!/usr/bin/env sh
 
-sensors | \
+TEMPERATURE=`sensors | \
 grep -i 'physical' | \
 awk '{print $4}' | \
-tr -d '+'
+tr -d '+'`
+
+echo $TEMPERATURE
+echo $TEMPERATURE
+
+exit
