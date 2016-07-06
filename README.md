@@ -42,6 +42,8 @@ I use [i3-gaps](https://github.com/Airblader/i3) so you can find i3-gaps specifi
 `ln -s ~/.dotfiles/i3/config ~/.config/i3/config`
 
 #### i3blocks
+Use [i3blocks-gaps](https://github.com/Airblader/i3blocks-gaps).
+
 `ln -s ~/.dotfiles/i3blocks/config ~/.i3blocks.conf`
 
 There's also ready i3lock script in `scripts/i3lock`. View its own readme file for more information.
