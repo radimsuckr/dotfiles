@@ -4,7 +4,7 @@
 if [[ `cat /sys/class/net/wlo1/operstate` = 'down' ]]; then
 	echo 'down'
 	echo 'down'
-	echo \#ff0000
+	echo \#ff2c4b
 else
 	SSID=`iw dev wlo1 link | \
 	grep SSID | \
