@@ -5,6 +5,7 @@ xset -b
 setxkbmap cz
 nitrogen --restore
 compton -b
+udiskie &
 
 cd .dotfiles/X
 xrdb Xresources
