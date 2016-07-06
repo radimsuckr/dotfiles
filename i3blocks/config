@@ -45,17 +45,10 @@ interval=15
 color=#8cffba
 border=#8cffba
 
-[ssid]
+[wireless]
 interval=1
 color=#00ff99
 border=#00ff99
-separator=false
-
-[iface]
-instance=wlo1
-color=#00ff99
-border=#00ff99
-interval=1
 
 [battery]
 label=BAT

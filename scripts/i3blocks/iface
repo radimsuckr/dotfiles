@@ -1,5 +1,0 @@
-#!/usr/bin/env sh
-
-ip addr show wlo1 | \
-grep -i 'inet\ ' | \
-awk '{print $2}'
