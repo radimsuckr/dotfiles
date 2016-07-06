@@ -14,6 +14,9 @@ case ${BLOCK_BUTTON} in
 	1)
 		amixer sset Master toggle
 		;;
+	3)
+		pavucontrol
+		;;
 	4)
 		amixer sset Master 5%+
 		;;
