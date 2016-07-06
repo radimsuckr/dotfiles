@@ -4,7 +4,7 @@ TEMPERATURE=`sensors | \
 grep -i 'physical' | \
 awk '{print $4}' | \
 tr -d '+'`
-TEMPERATURE=`sensors | \
+LEVEL=`sensors | \
 grep -i 'physical' | \
 awk '{print $4}' | \
 tr -d '+°C'`
