@@ -5,4 +5,10 @@ DATE=`date '+%d.%m. %Y %H:%M'`
 echo $DATE
 echo $DATE
 
+case ${BLOCK_BUTTON} in
+	1)
+		gsimplecal
+		;;
+esac
+
 exit
