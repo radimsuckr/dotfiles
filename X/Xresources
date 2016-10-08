@@ -17,6 +17,14 @@
 #define magenta #f22168
 #define bmagenta #f26192
 
+Xft.dpi: 96
+Xft.autohint: false
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.hinting: true
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintfull
+
 *background: black
 *foreground: awhite
 

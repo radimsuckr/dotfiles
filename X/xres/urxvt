@@ -1,4 +1,4 @@
-URxvt*font: xft:iosevka:pixelsize=11:antialias=true:hinting=true:autohint=true:bold
+URxvt*font: xft:iosevka:size=8:bold
 URxvt.letterSpace: -1
 URxvt*depth: 32
 URxvt*background: transblack
