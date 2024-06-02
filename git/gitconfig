@@ -1,12 +1,17 @@
+# vi:ft=gitconfig
 [core]
 	editor = nvim
+
 [push]
 	default = simple
+
 [diff]
 	tool = nvimdiff
 	noprefix = true
 	renames = copies
+
 [difftool]
 	prompt = true
+
 [difftool "nvimdiff"]
 	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
